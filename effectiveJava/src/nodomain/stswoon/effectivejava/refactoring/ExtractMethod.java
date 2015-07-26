@@ -1,4 +1,4 @@
-package nodomain.stswoon.ideafeatures.refactoring;
+package nodomain.stswoon.effectivejava.refactoring;
 
 
 public class ExtractMethod {
@@ -9,7 +9,7 @@ public class ExtractMethod {
         int result = x + y;
         result *= 2;
 
-        System.out.println(result); 
+        System.out.println(result);
     }
 
 //    private void complexMethod() {
