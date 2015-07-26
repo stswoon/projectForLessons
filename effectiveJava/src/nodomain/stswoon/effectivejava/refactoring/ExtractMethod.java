@@ -1,4 +1,4 @@
-package nodomain.stswoon.refactoring;
+package nodomain.stswoon.ideafeatures.refactoring;
 
 
 public class ExtractMethod {

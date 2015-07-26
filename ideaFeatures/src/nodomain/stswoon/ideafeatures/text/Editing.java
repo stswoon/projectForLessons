@@ -1,4 +1,4 @@
-package nodomain.stswoon.text;
+package nodomain.stswoon.ideafeatures.text;
 
 public class Editing {
     /**
