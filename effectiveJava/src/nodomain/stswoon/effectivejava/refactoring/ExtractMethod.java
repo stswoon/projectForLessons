@@ -9,10 +9,10 @@ public class ExtractMethod {
         int result = x + y;
         result *= 2;
 
-        System.out.println(result);
+        System.out.println(result); 
     }
 
-//    private void complexMethod() {  
+//    private void complexMethod() {
 //        String text = "test";
 //        User user = new User();
 //
