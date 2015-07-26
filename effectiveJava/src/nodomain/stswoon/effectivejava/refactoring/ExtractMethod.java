@@ -12,7 +12,7 @@ public class ExtractMethod {
         System.out.println(result);
     }
 
-//    private void complexMethod() {
+//    private void complexMethod() {  
 //        String text = "test";
 //        User user = new User();
 //
