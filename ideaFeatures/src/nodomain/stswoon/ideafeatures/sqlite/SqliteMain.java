@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class SqliteMain {
+class SqliteMain {
     private static final String DB_FILE = "W:\\IdeaProjects\\projectForLessons\\ideaFeatures\\resources\\sqlite\\test-sqllite";
 
     public static void main(String[] args) {
@@ -25,6 +25,7 @@ public class SqliteMain {
             e.printStackTrace();
         } finally {
             try {
+                assert resultSet != null;
                 resultSet.close();
                 statement.close();
                 connection.close();

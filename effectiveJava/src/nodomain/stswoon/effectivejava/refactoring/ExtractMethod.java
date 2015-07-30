@@ -1,6 +1,6 @@
 package nodomain.stswoon.effectivejava.refactoring;
 
-public class ExtractMethod {
+class ExtractMethod {
     private void complexMethod(int y) {
         int x = 0;
 
