@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.abstractfactory;
+package nodomain.stswoon.patterns.internet.abstractfactory;
 
 public class Green implements Color {
     @Override

@@ -1,6 +1,4 @@
-package nodomain.stswoon.patterns.abstractfactory;
-
-import nodomain.stswoon.patterns.factory.ShapeFactory;
+package nodomain.stswoon.patterns.internet.abstractfactory;
 
 public class FactoryProducer {
     enum Type {SHAPE, COLOR}

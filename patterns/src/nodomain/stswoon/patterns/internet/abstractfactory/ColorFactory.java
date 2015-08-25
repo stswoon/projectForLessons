@@ -1,6 +1,6 @@
-package nodomain.stswoon.patterns.abstractfactory;
+package nodomain.stswoon.patterns.internet.abstractfactory;
 
-import nodomain.stswoon.patterns.factory.Shape;
+import nodomain.stswoon.patterns.internet.factory.Shape;
 
 public class ColorFactory extends AbstractFactory {
     enum Type {RED, GREEN, BLUE}

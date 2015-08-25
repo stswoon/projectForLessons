@@ -1,6 +1,6 @@
-package nodomain.stswoon.patterns.abstractfactory;
+package nodomain.stswoon.patterns.internet.abstractfactory;
 
-import nodomain.stswoon.patterns.factory.*;
+import nodomain.stswoon.patterns.internet.factory.*;
 
 public class ShapeFactoryDelegate extends AbstractFactory {
     @Override

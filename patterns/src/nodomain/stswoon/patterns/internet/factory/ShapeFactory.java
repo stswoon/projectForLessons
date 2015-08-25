@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.factory;
+package nodomain.stswoon.patterns.internet.factory;
 
 public class ShapeFactory {
     enum Type {SQUARE, RECTANGLE, CIRCLE}

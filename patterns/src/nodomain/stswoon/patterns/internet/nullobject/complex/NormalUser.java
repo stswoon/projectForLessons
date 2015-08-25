@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.nullobject.complex;
+package nodomain.stswoon.patterns.internet.nullobject.complex;
 
 public class NormalUser implements User {
     final String name;

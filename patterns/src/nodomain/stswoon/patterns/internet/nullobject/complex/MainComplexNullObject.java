@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.nullobject.complex;
+package nodomain.stswoon.patterns.internet.nullobject.complex;
 
 class MainComplexNullObject {
     public static void main(String[] args) {

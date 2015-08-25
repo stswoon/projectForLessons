@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.factory;
+package nodomain.stswoon.patterns.internet.factory;
 
 public class Square implements Shape {
     @Override
