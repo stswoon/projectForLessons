@@ -33,9 +33,10 @@ public class WeatherData implements Subject {
         notifyObservers();
     }
 
-    public void setMesurement(double t, double h, double p) {
+    public void setMeasurements(double t, double h, double p) {
         this.t = t;
         this.h = h;
         this.p = p;
+        mesurementsChanged();
     }
 }
