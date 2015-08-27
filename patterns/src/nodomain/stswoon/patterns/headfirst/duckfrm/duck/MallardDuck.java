@@ -1,4 +1,7 @@
-package nodomain.stswoon.patterns.headfirst.duck;
+package nodomain.stswoon.patterns.headfirst.duckfrm.duck;
+
+import nodomain.stswoon.patterns.headfirst.duckfrm.fly.FlyWithWings;
+import nodomain.stswoon.patterns.headfirst.duckfrm.quack.Quack;
 
 public class MallardDuck extends Duck {
     public MallardDuck() {

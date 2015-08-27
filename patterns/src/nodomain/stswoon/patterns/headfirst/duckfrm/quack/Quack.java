@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.headfirst.duck;
+package nodomain.stswoon.patterns.headfirst.duckfrm.quack;
 
 public class Quack implements QuackBehavior {
     @Override

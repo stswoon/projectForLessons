@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.headfirst.duck;
+package nodomain.stswoon.patterns.headfirst.duckfrm.fly;
 
 public class FlyWithWings implements FlyBehaviour {
     @Override
