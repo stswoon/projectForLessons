@@ -1,4 +1,4 @@
-package nodomain.stswoon.patterns.headfirst.pizza;
+package nodomain.stswoon.patterns.headfirst.pizzastrore.pizza;
 
 public class Pizza {
     public void bake() {

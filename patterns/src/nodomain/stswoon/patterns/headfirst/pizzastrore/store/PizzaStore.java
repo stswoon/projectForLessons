@@ -1,4 +1,6 @@
-package nodomain.stswoon.patterns.headfirst.pizza;
+package nodomain.stswoon.patterns.headfirst.pizzastrore.store;
+
+import nodomain.stswoon.patterns.headfirst.pizzastrore.pizza.Pizza;
 
 public abstract class PizzaStore {
     public Pizza orderPizza(String type) {

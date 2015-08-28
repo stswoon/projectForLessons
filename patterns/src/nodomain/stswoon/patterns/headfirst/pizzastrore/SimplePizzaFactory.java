@@ -1,4 +1,6 @@
-package nodomain.stswoon.patterns.headfirst.pizza;
+package nodomain.stswoon.patterns.headfirst.pizzastrore;
+
+import nodomain.stswoon.patterns.headfirst.pizzastrore.pizza.Pizza;
 
 public class SimplePizzaFactory {
     public Pizza createPizza(String type) {
