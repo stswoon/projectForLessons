@@ -1,35 +1,14 @@
 package nodomain.stswoon.patterns.headfirst.weather.data;
 
-import nodomain.stswoon.patterns.headfirst.weather.Observer;
-import nodomain.stswoon.patterns.headfirst.weather.Subject;
+import java.util.Observable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-public class WeatherData implements Subject {
-    private Collection<Observer> observers = new ArrayList<>();
+public class WeatherData extends Observable {
     private double t;
     private double h;
     private double p;
 
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observers);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(t, h, p);
-        }
-    }
-
     public void mesurementsChanged() {
+        setChanged();
         notifyObservers();
     }
 
@@ -38,5 +17,17 @@ public class WeatherData implements Subject {
         this.h = h;
         this.p = p;
         mesurementsChanged();
+    }
+
+    public double getT() {
+        return t;
+    }
+
+    public double getH() {
+        return h;
+    }
+
+    public double getP() {
+        return p;
     }
 }
