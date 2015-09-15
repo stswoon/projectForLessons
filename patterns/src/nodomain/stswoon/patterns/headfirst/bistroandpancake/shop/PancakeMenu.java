@@ -5,7 +5,7 @@ import nodomain.stswoon.patterns.headfirst.bistroandpancake.menu.MenuItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PancakeMenu {
+public class PancakeMenu implements Menu {
     ArrayList menuItems;
 
     public PancakeMenu() {
@@ -26,6 +26,7 @@ public class PancakeMenu {
         return menuItems;
     }
 
+    @Override
     public Iterator createIterator() {
         return menuItems.iterator();
     }

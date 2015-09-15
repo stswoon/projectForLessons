@@ -30,5 +30,6 @@ public class DinnerMenuIterator implements Iterator {
 
     @Override
     public void remove() {
+        throw new UnsupportedOperationException();//api said that this method can throw such exception and every client should take in account that this exception might be here
     }
 }
