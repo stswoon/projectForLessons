@@ -1,7 +1,11 @@
 package nodomain.stswoon.patterns.headfirst.bublegum.machine;
 
+import java.util.Random;
+
 public class HasQuarterState implements State {
-    private final GumballMachine gumballMachine;
+    transient private static final int POSSIBILITY = 3; //means 1/POSSIBILITY * 100%
+    transient private Random randomWinner = new Random(System.currentTimeMillis());
+    transient private final GumballMachine gumballMachine;
 
     public HasQuarterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
@@ -21,7 +25,12 @@ public class HasQuarterState implements State {
     @Override
     public void turnCrank() {
         System.out.println("You turned...");
-        gumballMachine.setState(gumballMachine.getSoldState());
+        int winner = randomWinner.nextInt(POSSIBILITY);
+        if (winner == 0 && gumballMachine.getGumballCount() > 1) {
+            gumballMachine.setState(gumballMachine.getWinnerState());
+        } else {
+            gumballMachine.setState(gumballMachine.getSoldState());
+        }
     }
 
     @Override

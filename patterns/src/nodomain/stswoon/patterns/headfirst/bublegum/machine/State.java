@@ -1,6 +1,8 @@
 package nodomain.stswoon.patterns.headfirst.bublegum.machine;
 
-public interface State {
+import java.io.Serializable;
+
+public interface State extends Serializable {
     void insertQuarter();
     void ejectQuarter();
     void turnCrank();

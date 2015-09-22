@@ -1,7 +1,7 @@
 package nodomain.stswoon.patterns.headfirst.bublegum.machine;
 
 public class NoQuarterState implements State {
-    private GumballMachine gumballMachine;
+    transient private GumballMachine gumballMachine;
 
     public NoQuarterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;

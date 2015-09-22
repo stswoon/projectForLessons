@@ -1,7 +1,7 @@
 package nodomain.stswoon.patterns.headfirst.bublegum.machine;
 
 public class SoldState implements State {
-    private final GumballMachine gumballMachine;
+    transient protected final GumballMachine gumballMachine;
 
     public SoldState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
