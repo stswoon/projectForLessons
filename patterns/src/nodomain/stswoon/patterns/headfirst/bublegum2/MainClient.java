@@ -8,6 +8,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+//todo: google - java rmi
 public class MainClient {
     public static void main(String[] args) {
         GumballMachineRemote gumballMachineRemote = null;
