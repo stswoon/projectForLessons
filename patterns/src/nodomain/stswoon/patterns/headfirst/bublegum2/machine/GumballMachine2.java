@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class GumballMachine2 extends UnicastRemoteObject implements GumballMachineRemote {
-    private GumballMachine gumballMachine;
+    transient private GumballMachine gumballMachine;
     private final String location;
 
     public GumballMachine2(String location, int gumBallCount) throws RemoteException{

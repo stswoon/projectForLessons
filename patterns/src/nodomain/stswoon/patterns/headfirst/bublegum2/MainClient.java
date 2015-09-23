@@ -8,12 +8,12 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-//todo: google - java rmi
+//start MainRemote first
 public class MainClient {
     public static void main(String[] args) {
         GumballMachineRemote gumballMachineRemote = null;
         try {
-            gumballMachineRemote = (GumballMachineRemote) Naming.lookup("rmi://127.0.0.1/gumballmachine");
+            gumballMachineRemote = (GumballMachineRemote) Naming.lookup("//localhost:2005/gumballmachine");
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
