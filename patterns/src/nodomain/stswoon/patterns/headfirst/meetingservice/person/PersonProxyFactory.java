@@ -2,7 +2,7 @@ package nodomain.stswoon.patterns.headfirst.meetingservice.person;
 
 import java.lang.reflect.Proxy;
 
-public class PersonFactory {
+public class PersonProxyFactory {
     public static PersonBean getOwnerProxy(PersonBean personBean) {
         return (PersonBean) Proxy.newProxyInstance(
                 personBean.getClass().getClassLoader(),
