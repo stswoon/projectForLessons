@@ -9,5 +9,6 @@ public class MainDJ {
     public static void main(String[] args) {
         BeatModel model = new BeatModelImpl();
         Controller controller = new BeatController(model);
+        //todo there is a error in usage midi API because track sounds only one time.
     }
 }
