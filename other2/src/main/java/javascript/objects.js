@@ -18,7 +18,7 @@ var getSetObject = {
     }
 
 };
-console.log(getSetObject);
+//console.log(getSetObject);
 Object.defineProperty(getSetObject,
     "_test3", {
         get: function () {
@@ -30,23 +30,23 @@ Object.defineProperty(getSetObject,
     }
 );
 
-console.log(getSetObject.height);
-console.log(getSetObject.test1);
-getSetObject.test1 = [0, 8];
-console.log(getSetObject.test1);
-
-//console.log(getSetObject.test2);//endless recursion
-
-console.log(getSetObject.test3);
-getSetObject.test3 = 'www';
-console.log(getSetObject.test3);
-console.log(getSetObject._test3);
-getSetObject._test3 = 'bbb';
-console.log(getSetObject._test3);
-console.log(getSetObject.test3);
-
-console.log(getSetObject.test4);
-getSetObject.test4 = '222'; //property is redonly because there is no set methid
-console.log(getSetObject.test4);
+//console.log(getSetObject.height);
+//console.log(getSetObject.test1);
+//getSetObject.test1 = [0, 8];
+//console.log(getSetObject.test1);
+//
+////console.log(getSetObject.test2);//endless recursion
+//
+//console.log(getSetObject.test3);
+//getSetObject.test3 = 'www';
+//console.log(getSetObject.test3);
+//console.log(getSetObject._test3);
+//getSetObject._test3 = 'bbb';
+//console.log(getSetObject._test3);
+//console.log(getSetObject.test3);
+//
+//console.log(getSetObject.test4);
+//getSetObject.test4 = '222'; //property is redonly because there is no set methid
+//console.log(getSetObject.test4);
 
 
