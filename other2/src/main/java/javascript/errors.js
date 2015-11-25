@@ -1,6 +1,6 @@
 function testException() {
     try {
-        return "ok";
+        return "ok1";
     } finally {
         alert("finally");
     }
