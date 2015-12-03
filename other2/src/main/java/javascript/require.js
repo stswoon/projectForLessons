@@ -4,7 +4,7 @@
     exports.number = function(name) {return names.indexOf(name);}
 })(this.weekDay = {});
 
-console.log(weekDay.name(2));
+//console.log(weekDay.name(2));
 
 //standart CommonsJS
 function require(name) {
