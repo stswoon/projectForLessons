@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+                http://maven.apache.org/POM/4.0.0
+                http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>nodomain.stswoon.gwt-client-server-start-project</groupId>
+        <artifactId>gwt-client-server-start-project-aggregator</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nodomain.stswoon.gwt-client-server-start-project</groupId>
+    <artifactId>backend</artifactId>
+    <packaging>war</packaging>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <!--<plugins>-->
+            <!--<plugin> &lt;!&ndash;http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html#running-assembled-webapp-as-war&ndash;&gt;-->
+                <!--<groupId>org.eclipse.jetty</groupId>-->
+                <!--<artifactId>jetty-maven-plugin</artifactId>-->
+                <!--<version>9.2.2.v20140723</version>-->
+                <!--<configuration>-->
+                    <!--<war>${project.build.directory}/${project.build.finalName}.${project.packaging}</war>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+    </dependencies>
+</project>
