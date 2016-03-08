@@ -12,19 +12,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>nodomain.stswoon.gwt-client-server-start-project</groupId>
-    <artifactId>backend</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>web-xml</artifactId>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>backend</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

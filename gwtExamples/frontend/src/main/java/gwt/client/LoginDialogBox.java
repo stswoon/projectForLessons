@@ -5,7 +5,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.*;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import shared.FeedData;
+import shared.MyService;
+import shared.MyServiceAsync;
+
+import java.util.ArrayList;
 
 public class LoginDialogBox extends PopupPanel {
     @UiTemplate("UIBinder.ui.xml")
@@ -16,6 +22,8 @@ public class LoginDialogBox extends PopupPanel {
 
     interface MyStyle extends CssResource {
         String redBox();
+
+        String bolder();
     }
 
     @UiField
@@ -42,8 +50,19 @@ public class LoginDialogBox extends PopupPanel {
 
     @UiHandler("btnLogin")
     void submitLoginForm(ClickEvent event) {
-        //if (validateEmail() && validatePassword()) {
-        Window.alert("Logging in...");
-        //}
+        final AsyncCallback<ArrayList<FeedData>> updateTweetPanelCallback = new AsyncCallback<ArrayList<FeedData>>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                Window.alert("error: " + throwable.getMessage());
+            }
+
+            @Override
+            public void onSuccess(ArrayList<FeedData> feedDatas) {
+                Window.alert(feedDatas.get(0).getData());
+            }
+        };
+
+        MyServiceAsync service = GWT.create(MyService.class);
+        service.getUserTimeline(txtEmail.getText(), updateTweetPanelCallback);
     }
 }
