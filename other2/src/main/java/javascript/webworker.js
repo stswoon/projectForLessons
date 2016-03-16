@@ -1,3 +1,4 @@
+/*
 // http://www.html5rocks.com/ru/tutorials/workers/basics/
 //var worker = new Worker('doWork.js'); //work only on servers, on local PC this cause security exception the line below shows inline workers
 var blob = new Blob([
@@ -30,6 +31,7 @@ function withOutWebWorker(n) {
 }
 
 withOutWebWorker(1000000000*3);
+*/
 
 /*
 sample result
