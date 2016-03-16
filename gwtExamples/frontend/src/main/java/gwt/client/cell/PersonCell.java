@@ -3,29 +3,18 @@ package gwt.client.cell;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.*;
+import com.google.gwt.dom.client.BrowserEvents;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 
-import java.util.List;
-
 public class PersonCell extends AbstractCell<Person> /*implements Redrawable*/ {
-//    public class RedrawHandler {
-//        void onRedraw();
-//    }
 
-//    private final RedrawHandler redrawHandler;
-
-    public PersonCell(/*RedrawHandler redrawHandler*/) {
+    public PersonCell() {
         super(BrowserEvents.CLICK);
-//        this.redrawHandler = redrawHandler;
     }
-
-//    @Override
-//    public void redraw() {
-//        redrawHandler.onRedraw();
-//    }
 
     interface ViewTemplate extends SafeHtmlTemplates {
         //@Template("<input type=\"text\" value=\"{0}\" tabindex=\"-1\"></input>")

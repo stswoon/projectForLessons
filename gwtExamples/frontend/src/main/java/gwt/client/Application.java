@@ -2,17 +2,24 @@ package gwt.client;
 
 import com.google.gwt.cell.client.*;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 import gwt.client.cell.Person;
 import gwt.client.cell.PersonHasCell;
+import gwt.client.deferrerbinding.MyClass;
+import gwt.client.gin.MyGInjector;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application implements EntryPoint {
+    private final MyGInjector myGInjector = GWT.create(MyGInjector.class);
+
     public void onModuleLoad() {
         RootPanel.get().add(new LoginDialogBox());
 
@@ -23,6 +30,10 @@ public class Application implements EntryPoint {
 
         drawCompositeCell();
         drawTableCell();
+
+        Window.alert(myGInjector.getComputer().getHardDiskName());
+
+        ((MyClass)GWT.create(MyClass.class)).show();
     }
 
     private void drawCompositeCell() {

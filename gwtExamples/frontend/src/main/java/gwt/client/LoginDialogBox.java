@@ -48,7 +48,7 @@ public class LoginDialogBox extends PopupPanel {
         add(uiBinder.createAndBindUi(this));
     }
 
-    @UiHandler("btnLogin")
+    @UiHandler("btnLogin") //can contains list of values
     void submitLoginForm(ClickEvent event) {
         final AsyncCallback<ArrayList<FeedData>> updateTweetPanelCallback = new AsyncCallback<ArrayList<FeedData>>() {
             @Override
