@@ -1,11 +1,11 @@
-package nodomain;
+package nodomain.completablefuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 
-public class Main {
+public class CompletableFutureMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         System.out.println("--- test-1");
         Future<String> future = CompletableFuture.completedFuture("test immediate");
