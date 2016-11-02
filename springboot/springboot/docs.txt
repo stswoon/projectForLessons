@@ -1,0 +1,9 @@
+idea2016.2
+	spring initializer
+	https://www.youtube.com/watch?v=G9apMqwRedA&list=PLVe-2wcL84b-vNYciZHVDYwrOhpQRE-DT&index=11
+mysql
+	worckbanch
+
+https://habrahabr.ru/post/257223/
+https://github.com/Baeldung/spring-hypermedia-api/tree/master/src/main/java/com/baeldung
+https://spring.io/guides/gs/serving-web-content/
