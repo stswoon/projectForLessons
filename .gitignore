@@ -2,3 +2,12 @@
 /joker2015-3/.idea
 /springboot/.idea
 /.idea
+/gwtExamples/backend/backend.iml
+/gwtExamples/frontend/gwt-unitCache
+/gwtExamples/backend/target
+/gwtExamples/frontend/*.iml
+/gwtExamples/frontend/target
+/gwtExamples/web-xml/target
+/gwtExamples/*.iml
+/gwtExamples/web-xml/*.iml
+/springboot/untitled/*.iml

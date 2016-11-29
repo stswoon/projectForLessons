@@ -3,10 +3,11 @@ package nodomain.stswoon.springbootdemo.controller;
 import nodomain.stswoon.springbootdemo.CityRepo;
 import nodomain.stswoon.springbootdemo.dbmodel.City;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.core.Request;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class CityController {
 //    }
 
     @RequestMapping(method = RequestMethod.GET)
+    //@POST
     public List<CityResource> findAll() {
         final List<City> cities = (List<City>) repo.findAll();
         final List<CityResource> cityResources = new ArrayList<>();
@@ -53,4 +55,22 @@ public class CityController {
 //        repo.save(newBook.getCity());
 //    }
 //}
+
+    @RequestMapping("/create")
+    public void create() {
+        City city = new City();
+        city.setId(null);
+        city.setName("new");
+        repo.save(city);
+    }
+
+    @RequestMapping("/jsonTest")
+    public String jsonTest(@ModelAttribute("user") User user) {
+       return user.toString();
+    }
+
+    @RequestMapping("/jsonTest2")
+    public String jsonTest2(User user) {
+        return user.toString();
+    }
 }
