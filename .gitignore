@@ -11,3 +11,10 @@
 /gwtExamples/*.iml
 /gwtExamples/web-xml/*.iml
 /springboot/untitled/*.iml
+/gwtExamples/frontend/war/Application
+/gwtExamples/frontend/war/WEB-INF/deploy/Application/rpcPolicyManifest
+/gwtExamples/frontend/war/WEB-INF/deploy/Application/symbolMaps
+/typescript/.idea
+/typescript/src/index.js
+/typescript/src/index.js.map
+/typescript/*.iml
