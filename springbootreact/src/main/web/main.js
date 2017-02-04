@@ -19,12 +19,12 @@ ReactDOM.render(
 //-----
 
 var Message = React.createClass({
-	render: function() {			
+	render: function() {
 		return <span ref="self">{this.props.message}</span>;
 	},
-	
+
 	componentDidMount: function() {
-		//this.refs.self.getDOMNode().setAttribute('debugId', this.props.debugId)		
+		//this.refs.self.getDOMNode().setAttribute('debugId', this.props.debugId)
 		var node = ReactDOM.findDOMNode(this);
 		node.setAttribute('debugId', this.props.debugId);
 	}
@@ -45,21 +45,21 @@ var TextList = React.createClass({
 			this.forceUpdate();
 		}.bind(this));
 	},
-	
+
 	componentWillUnmount: function() {
 		PubSub.unsubscribe(this.pubsub_token);
-	},	
+	},
 
 	render: function() {
-		var view = [];	
+		var view = [];
 		var number = 0;
-		var _this = this;	
+		var _this = this;
 		this.state.messages.forEach(function(msg) {
 			var key = _this.props.mykey + "_" + number;
 			view.push(<Message message={msg} key={key} debugId={_this.state.staticNumber}/>); //todo key should not be changed for old <Messages>
 			number++;
 			_this.state.staticNumber++;
-		});		
+		});
 		return <div>{view}</div>;
 	}
 });
@@ -69,16 +69,16 @@ var AddTextButton = React.createClass({
 		return {
 			staticNumber: 0
 		};
-	},	
-	
+	},
+
 	myclick: function() {
 		//this.refs.forEach(function(textList) {
-		//	textList.addMessage("text #" + this.state.staticNumber);			
+		//	textList.addMessage("text #" + this.state.staticNumber);
 		//});
 		PubSub.publish('message-topic', "text #" + this.state.staticNumber);
 		this.state.staticNumber++;
 	},
-	
+
 	render: function() {
 		return <input type="button" onClick={this.myclick} value="Add Text"></input>
 	}
@@ -86,7 +86,7 @@ var AddTextButton = React.createClass({
 
 var MyControll = React.createClass({
 	render: function() {
-		var textLists = [<TextList key="text-list-1" mykey="text-list-1"/>, <TextList key="text-list-2" mykey="text-list-2"/>];		
+		var textLists = [<TextList key="text-list-1" mykey="text-list-1"/>, <TextList key="text-list-2" mykey="text-list-2"/>];
 		return (
 			<div>
 				<AddTextButton/>
