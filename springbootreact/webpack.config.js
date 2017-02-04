@@ -1,7 +1,11 @@
 module.exports = {
-    entry: "./src/main/web/main2.js",
+    entry: {
+        helloWorldCtrl: "./src/main/web/scripts/helloWorldCtrl.js",
+        dataFromServerCtrl: "./src/main/web/scripts/dataFromServerCtrl.js"
+    },
     output: {
-        filename: "target/classes/static/bundle.js"
+        filename: "target/classes/static/scripts/[name].bundle.js",
+        chunkFilename: "[id].bundle.js"
     },
     module: {
         loaders: [
@@ -15,4 +19,4 @@ module.exports = {
             }
         ]
     }
-}
+};

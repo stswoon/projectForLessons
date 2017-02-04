@@ -5,7 +5,7 @@ var Main = React.createClass({
     render: function(){
         return (
             <div>
-                Hello World from react
+                Hello World from react!
             </div>
         )
     }
