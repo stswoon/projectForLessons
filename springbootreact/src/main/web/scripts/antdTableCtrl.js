@@ -1,27 +1,24 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactDOM = require('react-dom');
+var React = require("react");
+var ReactDOM = require("react-dom");
 
-
-
-import { Table, Icon } from 'antd';
+import { Table, Icon } from "antd";
 
 const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
     render: text => <a href="#">{text}</a>,
 }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: "Age",
+    dataIndex: "age",
+    key: "age",
 }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
 }, {
-    title: 'Action',
-    key: 'action',
+    title: "Action",
+    key: "action",
     render: (text, record) => (
         <span>
       <a href="#">Action 一 {record.name}</a>
@@ -36,20 +33,20 @@ const columns = [{
 }];
 
 const data = [{
-    key: '1',
-    name: 'John Brown',
+    key: "1",
+    name: "John Brown",
     age: 32,
-    address: 'New York No. 1 Lake Park',
+    address: "New York No. 1 Lake Park",
 }, {
-    key: '2',
-    name: 'Jim Green',
+    key: "2",
+    name: "Jim Green",
     age: 42,
-    address: 'London No. 1 Lake Park',
+    address: "London No. 1 Lake Park",
 }, {
-    key: '3',
-    name: 'Joe Black',
+    key: "3",
+    name: "Joe Black",
     age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    address: "Sidney No. 1 Lake Park",
 }];
 
 ReactDOM.render(<Table columns={columns} dataSource={data} />, document.getElementById("app"));

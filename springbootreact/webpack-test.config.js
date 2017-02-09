@@ -1,11 +1,9 @@
 module.exports = {
     entry: {
-        antdTableCtrl: "./src/main/web/scripts/antdTableCtrl.js",
-        helloWorldCtrl: "./src/main/web/scripts/helloWorldCtrl.js",
-        dataFromServerCtrl: "./src/main/web/scripts/dataFromServerCtrl.js"
+        simpleTest: "./src/test/web/simpleTest.jsx"
     },
     output: {
-        filename: "target/classes/static/scripts/[name].bundle.js",
+        filename: "target/test/[name].bundle.js",
         chunkFilename: "[id].bundle.js"
     },
     devtool: "source-map",

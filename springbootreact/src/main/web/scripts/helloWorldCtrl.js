@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+var React = require("react");
+var ReactDOM = require("react-dom");
 
 var Main = React.createClass({
     render: function(){
@@ -7,8 +7,10 @@ var Main = React.createClass({
             <div>
                 Hello World from react!
             </div>
-        )
+        );
     }
 });
 
-ReactDOM.render(<Main />, document.getElementById('app'));
+export default Main;
+
+//commented for test ReactDOM.render(<Main />, document.getElementById('app'));
