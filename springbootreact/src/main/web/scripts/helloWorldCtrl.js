@@ -5,12 +5,15 @@ var Main = React.createClass({
     render: function(){
         return (
             <div>
-                Hello World from react!
+                Hello World from react! - new text to fail tests
             </div>
         );
     }
 });
 
+if (document.getElementById("app")) {
+    ReactDOM.render(<Main />, document.getElementById("app"));
+}
+
 export default Main;
 
-//commented for test ReactDOM.render(<Main />, document.getElementById('app'));
