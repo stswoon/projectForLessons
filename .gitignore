@@ -19,3 +19,5 @@
 /typescript/src/index.js.map
 /typescript/*.iml
 /springbootreact/node_modules
+/springbootreact/backstop_data/bitmaps_test
+/springbootreact/backstop_data/html_report
