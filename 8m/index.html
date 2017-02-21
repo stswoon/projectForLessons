@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+	<div class="page active" id="page0">
+  		<div class="description">
+  			Любимая с 8 марта + стих
+  		</div>
+  		<div class="controls">
+  			<input type="button" value="Начать" onclick="nextPage()"></input>	
+  		</div>
+  	</div>
+
+	<div class="page" id="page1">
+  		<div class="description">
+  			Сколько лет мы знакомы
+		</div>
+  		<div class="controls">
+  			<input type="button" value="1 год" onclick="answer(1,'1 year')"></input>
+  			<input type="button" value="2 года" onclick="answer(1,2)"></input>	
+  			<input type="button" value="5 лет" onclick="answer(1,5)"></input>	
+  			<input type="button" value="5 лет" onclick="answer(1,5)"></input>	
+  		</div>
+  	</div>
+
+	<div class="page" id="page2">
+		<div class="description">
+			Как ласково я тебя называю
+		</div>
+  		<div class="controls">
+  			<img src="2-1.jpg" onclick="answer(2,'fish')"></img>
+  			<img src="2-2.jpg" onclick="answer(2,'fish')"></img>
+  			<img src="2-3.jpg" onclick="answer(2,"fish")"></img>
+  			<img src="2-4.jpg" onclick="answer(2,"fish")"></img>
+  		</div>
+  	</div>
+
+  	//мой любимый цвет
+  	//твой любимый цвет
+
+  	<div class="page" id="page3">
+		<div class="description">
+			Я люблю тебя?
+		</div>
+  		<div class="controls">
+  			<input type="button" value="да" onclick="answer(1,"1 year")"></input>
+  			<input type="button" value="очень сильно" onclick="answer(1,2)"></input>	
+  			<input type="button" value="безумно!" onclick="answer(1,5)"></input>	
+  		</div>
+  	</div>	
+
+	<div class="page" id="page4">
+		<div class="description">
+			Пришло время узнать количество правильных ответов и совместимость
+			random 0/10 
+			вы идеальная пара
+
+			нажми меня
+		</div>
+  		<div class="controls">
+  			<img src="2-1.jpg" onclick="nextPage"></img> //поцелуй
+  		</div>
+  	</div>	
+
+	<div class="page" id="page5">
+		<div class="description">
+			гифка с салютом\поцелуями\цветами
+		</div>
+  	</div>
+</body> 
+</html>
