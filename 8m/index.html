@@ -20,7 +20,7 @@
 
 	<div class="page" id="page1">
   		<div class="description">
-  			Сколько лет мы знакомы
+  			Сколько лет мы знакомы?
 		</div>
   		<div class="controls">
   			<input type="button" value="1 год" onclick="answer(1,'1 year')"></input>
@@ -35,28 +35,59 @@
 			Как ласково я тебя называю
 		</div>
   		<div class="controls">
-  			<img src="2-1.jpg" onclick="answer(2,'fish')"></img>
-  			<img src="2-2.jpg" onclick="answer(2,'fish')"></img>
-  			<img src="2-3.jpg" onclick="answer(2,"fish")"></img>
-  			<img src="2-4.jpg" onclick="answer(2,"fish")"></img>
+  			<div onclick="answer(2,'fish')" class="img imgFish"></div>
+  			<div onclick="answer(2,'bread')" class="img imgBread"></div>
+  			<div onclick="answer(2,'sun')" class="img imgSun"></div>
+  			<div onclick="answer(2,'cat')" class="img imgCat"></div>
   		</div>
   	</div>
 
-  	//мой любимый цвет
-  	//твой любимый цвет
+    <div class="page" id="page3">
+    <div class="description">
+      мой любимый цвет
+    </div>
+      <div class="controls">
+        <div onclick="answer(2,'fish')" class="img imgFish"></div>
+        <div onclick="answer(2,'bread')" class="img imgBread"></div>
+        <div onclick="answer(2,'sun')" class="img imgSun"></div>
+        <div onclick="answer(2,'cat')" class="img imgCat"></div>
+      </div>
+    </div>
 
-  	<div class="page" id="page3">
+    <div class="page" id="page4">
+    <div class="description">
+      твой любимый цвет
+    </div>
+      <div class="controls">
+        <div onclick="answer(2,'fish')" class="img imgFish"></div>
+        <div onclick="answer(2,'bread')" class="img imgBread"></div>
+        <div onclick="answer(2,'sun')" class="img imgSun"></div>
+        <div onclick="answer(2,'cat')" class="img imgCat"></div>
+      </div>
+    </div>
+
+    //выбери наиболее важный момент нашей жизни - -турция-\-свадьба-\-сын-\-каток-
+
+    //выбери самого красивого мужчину - -я- и др
+
+    //наиболее развитая моя часть тела - моя фотка 
+
+    //самая главное в жизни - деньги\машина\дом\-семья-
+
+    //???
+
+  	<div class="page" id="page10">
 		<div class="description">
 			Я люблю тебя?
 		</div>
   		<div class="controls">
-  			<input type="button" value="да" onclick="answer(1,"1 year")"></input>
-  			<input type="button" value="очень сильно" onclick="answer(1,2)"></input>	
-  			<input type="button" value="безумно!" onclick="answer(1,5)"></input>	
+  			<input type="button" value="да" onclick="answer(1,'yes')"></input>
+  			<input type="button" value="очень сильно" onclick="answer(1,'very')"></input>	
+  			<input type="button" value="безумно!" onclick="answer(1,'crazy')"></input>	
   		</div>
   	</div>	
 
-	<div class="page" id="page4">
+	<div class="page" id="page11">
 		<div class="description">
 			Пришло время узнать количество правильных ответов и совместимость
 			random 0/10 
@@ -69,7 +100,7 @@
   		</div>
   	</div>	
 
-	<div class="page" id="page5">
+	<div class="page" id="page12">
 		<div class="description">
 			гифка с салютом\поцелуями\цветами
 		</div>
