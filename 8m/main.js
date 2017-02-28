@@ -1,5 +1,5 @@
 var pageIndex = 0;
-var RIGHT_ASWERS = []
+var RIGHT_ASWERS = ['7 years', 'sun', 'blue', 'green'];
 var answers = [];
 
 
@@ -20,3 +20,11 @@ function answer(taskNumber, answer) {
 	answers.push[answer]
 	nextPage();
 }
+
+//for dev
+setTimeout(function() {
+	nextPage();
+	nextPage();
+	nextPage();
+	//nextPage();
+}, 500);
