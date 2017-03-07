@@ -10,22 +10,30 @@ function nextPage() {
 
 	if (pageIndex == 9) {
 		result();
-	} else if (pageIndex == 10) {
-		salut();
-	}
-
+	} 
 }
 
 function answer(taskNumber, answer) {
-	answers.push[answer];
+	answers.push(answer);
 	nextPage();
 }
 
+function result() {
+	var result = 0;
+	for (var i = 0; i < RIGHT_ASWERS.length; ++i) {
+		if (RIGHT_ASWERS[i] === answers[i]) {
+			result++;
+		}
+	}
+	document.getElementById("result").innerHTML = result;
+	document.getElementById("result").textContent = result;
+}
+
 //for dev
-setTimeout(function() {
-	nextPage();
-	nextPage();
-	nextPage();
-	nextPage();
-	nextPage();
-}, 500);
+//setTimeout(function() {
+//	nextPage();
+//	nextPage();
+//	nextPage();
+//	nextPage();
+//	nextPage();
+//}, 500);
