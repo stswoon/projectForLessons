@@ -118,3 +118,23 @@
         return new Promise(resolve => setTimeout(() => resolve(sec), sec * 1000));
     }
 }
+
+//test6
+{
+    function test6() {
+        console.log("---test6");
+        asyncFunction();
+    }
+
+    async function asyncFunction() {
+        await resolveAfter2Seconds();
+        setTimeout(() => console.log("test6-2"), 2000) //didn't log almost in same time as "test6-1" so it's work not the same way as CompletableFuture
+    }
+
+    function resolveAfter2Seconds() {
+        return new Promise(resolve => setTimeout(() => {
+            console.log("test6-1");
+            resolve();
+        }, 2000));
+    }
+}
