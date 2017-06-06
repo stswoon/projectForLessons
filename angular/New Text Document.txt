@@ -1,0 +1,80 @@
+```javascript
+angular.module("app", ...).config(
+    function ($controllerProvider, $provide, $compileProvider, ...) {
+        angularDynamization(angular.module("app"), {
+            $controllerProvider: $controllerProvider,
+            $compileProvider: $compileProvider,
+            $provide: $provide
+        });
+        ...
+    }
+);
+```
+
+```javascript
+var element =  //element inside angular application
+    document.getElement.getElementById(...);
+var app = angular.module('app'); //already started application
+
+element.innerHTML = "<hello-User-Component></hello-User-Component>";
+app.startDynamicRegistration();
+app.component('helloUserComponent', {
+    template: "<div>Hello {{greeting}}</div>",
+    controller: function HelloUserController($scope) {
+        $scope.greeting = "John";
+    }
+});
+app.stopDynamicRegistration(element); //element in which will
+                                      //init new portion of angular
+```
+or 
+```javascript
+app.stopDynamicRegistration(element, injectorElement);
+```
+
+/**
+ * Make angular app to be dynamic. It means that you can add new factories, components and etc. dynamically.
+ * @param ngModule - angular module, e.g. angular.module("app")
+ * @param providers - {$controllerProvider, $compileProvider, $provide}
+ * @example
+ * <pre>
+ * angularDynamization(angular.module("app"), {<providers>} //use in config phase
+ * element.innerHTML = "<hello-User-Component></hello-User-Component>";
+ * app.startDynamicRegistration();
+ * app.component('helloUserComponent', {
+ *     template: "Hello",
+ *     controller: function () {}
+ * });
+ * app.stopDynamicRegistration(element);
+ * </pre>
+ */
+var angularDynamization = function (ngModule, providers) {
+    //original code is - https://stackoverflow.com/a/15292441/7860797
+
+    ngModule.startDynamicRegistration = function () {
+        // Store our _invokeQueue length before loading our controllers/directives/services
+        // This is just so we don't re-register anything
+        ngModule._beforeDynamicRegistationInvokeQueueLength = ngModule._invokeQueue.length;
+    };
+    ngModule.stopDynamicRegistration = function (element, injectorElement) {
+        // Register the controls/directives/services we just loaded
+        var queue = ngModule._invokeQueue;
+        for (var i = ngModule._beforeDynamicRegistationInvokeQueueLength; i < queue.length; i++) {
+            var call = queue[i];
+            // call is in the form [providerName, providerFunc, providerArguments]
+            var provider = providers[call[0]];
+            if (provider) {
+                // e.g. $controllerProvider.register("Ctrl", function() { ... })
+                provider[call[1]].apply(provider, call[2]);
+            }
+        }
+        // compile the new element
+        injectorElement = injectorElement || $('body');
+        injectorElement.injector().invoke(function ($compile, $rootScope) {
+            $compile($(element))($rootScope);
+            $rootScope.$apply();
+        });
+    };
+};
+
+
