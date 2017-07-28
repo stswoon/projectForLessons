@@ -38,7 +38,7 @@ module.exports = {
             // {test: /\.css$/, use: ["style-loader", "css-loader"]},
             {
                 test: /\.less$/,
-                exclude: /node_modules/,
+                //exclude: /node_modules/,
                 use: cssConfig
             },
             {
@@ -67,8 +67,8 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: "main.css",
-            disable: !prod,
-            excludeChunks: ["admin"]
+            disable: !prod//,
+            //excludeChunks: ["admin"] //todo
         }),
         new HtmlWebpackPlugin({
             filename: "admin.html",
