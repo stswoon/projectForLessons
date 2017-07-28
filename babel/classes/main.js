@@ -154,50 +154,55 @@ class UserNative {
 
 
     let Car = (function () {
-        let privateProps = new WeakMap(); //to as function
-        function pp(bind, set) {
+        //private params
+        let privateProps = new WeakMap();
+        function pp(bind, set) { //just to save some letters
             if (set) privateProps.set(bind, set);
             return privateProps.get(bind)
         };
+
+        //private function should be called via call to bind this
+        function printSpeed(text) {
+            console.log(text + pp(this).speed);
+        }
+
         class Car {
             constructor(name, speed) {
+                pp(this, {}); //init private storage
                 this.name = name;
-                // privateProps.set(this, {speed: speed});
-                pp(this, {});
                 pp(this).speed = speed;
             }
-
             name() {
                 console.log(this.name);
             }
-
             speed() {
-                console.log(pp(this).speed)
+                console.log(this.name + ": " + pp(this).speed);
+                printSpeed.call(this, "Speed from private function: ");
             }
             addSpeed() {
-                pp(this).speed = 30;
+                pp(this).speed += 10;
             }
         }
+
         return Car;
     })();
 
-// Create Class
-    var mc = new Car('lada', 10);
-    mc.speed();
-    var mc2 = new Car('bmw', 20);
-    mc2.speed();
-    mc.speed();
+// Tests
+    let lada = new Car('lada', 10);
+    lada.speed();
+    var bmw = new Car('bmw', 20);
+    bmw.speed();
+    lada.speed();
 
-    mc2.addSpeed();
-    mc2.speed();
+    bmw.addSpeed();
+    bmw.speed();
 
-    class MyCar extends Car {
+    class BrokenCar extends Car {
         speed() {
             super.speed();
             console.log("failed")
         }
     }
-
-    let mc3 = new MyCar("test", 0);
-    mc3.speed();
+    let brokenCar = new BrokenCar("test", 0);
+    brokenCar.speed();
 }

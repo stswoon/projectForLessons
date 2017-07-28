@@ -22,3 +22,7 @@
 /springbootreact/backstop_data/bitmaps_test
 /springbootreact/backstop_data/html_report
 /babel/.idea
+/webpack-starter/dist
+/webpack-starter/node_modules
+/webpack-starter/npm-debug.log
+/webpack-starter/.idea

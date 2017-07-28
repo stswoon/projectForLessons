@@ -1,4 +1,4 @@
-package nodomain.completablefuture;
+package qqq;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
