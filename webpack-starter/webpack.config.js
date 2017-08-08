@@ -3,7 +3,11 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
 
-const prod = process.env.NODE_ENV === "production";
+let prod = process.env.NODE_ENV == "production";
+console.log("anneq::prod=", prod, "process.env.NODE_ENV="+process.env.NODE_ENV+"|");
+//prod = true; //todo
+//todo html reloading
+//todo
 const cssDev = ["style-loader", "css-loader", "less-loader"];
 //     [{
 //         loader: "style-loader" // creates style nodes from JS strings
@@ -14,8 +18,8 @@ const cssDev = ["style-loader", "css-loader", "less-loader"];
 //     }]
 const cssProd = ExtractTextPlugin.extract({
     fallback: "style-loader",
-    use: ["css-loader", "less-loader"]
-    //publicPath: "/dist"
+    use: ["css-loader", "less-loader"]//,
+    //publicPath: "./dist"
 });
 const cssConfig = prod ? cssProd : cssDev;
 
@@ -45,6 +49,16 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/, //exactly without quotes
                 use: "babel-loader"
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                exclude: /node_modules/, //exactly without quotes
+                //use: "file-loader" //generates hash name
+                use: [
+                    "file-loader?name=[name]-[hash:6].[ext]",
+                    "image-webpack-loader" //compress
+                ]
+                //todo how to invalidate cache?
             }
         ]
     },
