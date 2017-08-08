@@ -3,9 +3,11 @@ import React from "react";
 import {renderToString} from "react-dom/server";
 import App from "../App"
 const path = require("path");
-
+import {StaticRouter} from "react-router-dom";
 console.log("starting express");
 const app = express();
+
+import "isomorphic-fetch"
 
 
 app.get("/server", (req, res) => {
@@ -14,6 +16,10 @@ app.get("/server", (req, res) => {
     res.send(`
         ${renderToString(<App/>)}
     `);
+});
+
+app.get("/api", (req, res) => {
+    res.json({name:"john"});
 });
 
 
@@ -28,8 +34,24 @@ var finalParagraphInterceptor = interceptor(function(req, res){
         },
         intercept: function(body, send) {
             console.log("server listen");
-            body = body.replace('<div id="root"></div>', '<div test="test" id="root">'+renderToString(<App/>)+'</div>')
-            send(body);
+            console.log(req.get('host'));
+            console.log(req.protocol);
+            //console.log(req);
+            let fullUrl = (req.protocol||"http") + '://'+ req.get('host')+"/api";
+            console.log(fullUrl);
+
+            fetch(fullUrl)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    body = body.replace('<div id="root"></div>', '<div test="test" id="root">'+
+                        renderToString(<StaticRouter location={req.url} context={data.name}><App/></StaticRouter>)+'</div>')
+                    send(body);
+                })
+                .catch(e => {
+                    console.log(e);
+                    send(body);
+                });
         }
     };
 });

@@ -1,7 +1,13 @@
 import React from "react";
+import routes from "./routes";
+import {Switch, Route} from "react-router-dom";
 
 export default class App extends React.Component {
     render() {
-        return <h1>124Hello, world!</h1>;
+        return (
+            <Switch>
+                {routes.map((route, i) => <Route key={i} {...route} />)}
+            </Switch>
+        );
     }
 }
