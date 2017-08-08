@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const path = require("path");
 
 let prod = process.env.NODE_ENV == "production";
-console.log("anneq::prod=", prod, "process.env.NODE_ENV="+process.env.NODE_ENV+"|");
+console.log("anneq::prod=", prod, "process.env.NODE_ENV=" + process.env.NODE_ENV + "|");
 //prod = true; //todo
 //todo html reloading
 //todo
@@ -23,10 +23,11 @@ const cssProd = ExtractTextPlugin.extract({
 });
 const cssConfig = prod ? cssProd : cssDev;
 
+
 //todo: pretty bundle in dev, source maps
 
 //https://github.com/jantimon/html-webpack-plugin#configuration
-module.exports = {
+const browserConfig = {
     entry: {
         app: "./src/index.js",
         admin: "./src/admin.js" //todo: css bundle
@@ -37,6 +38,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].bundle.js"
     },
+    devtool: "cheap-module-source-map",
     module: {
         rules: [
             // {test: /\.css$/, use: ["style-loader", "css-loader"]},
@@ -46,7 +48,12 @@ module.exports = {
                 use: cssConfig
             },
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/, //exactly without quotes
+                use: "react-hot-loader"
+            },
+            {
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/, //exactly without quotes
                 use: "babel-loader"
             },
@@ -93,3 +100,60 @@ module.exports = {
         new webpack.NamedModulesPlugin()
     ]
 };
+
+// const serverConfig = JSON.parse(JSON.stringify(browserConfig));
+// serverConfig.entry = "./src/server/index.js";
+// serverConfig.target = "node";
+// serverConfig.output = {
+//     path: path.resolve(__dirname, "dist"),
+//     filename: "server.js",
+//     libraryTarget: "commonjs2"
+// };
+// //serverConfig.module.rules[3].emit = false;//for pictures
+// serverConfig.module.rules[0] = { //for css
+//     test: /\.css$/,
+//     use: [
+//         {
+//             loader: "css-loader/locals"
+//         }
+//     ]
+// };
+const serverConfig = {
+    entry: "./src/server/index.js",
+    target: "node",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "server.js",
+        libraryTarget: "commonjs2"
+    },
+    devtool: "cheap-module-source-map",
+    module: {
+        rules: [
+            {
+                test: [/\.svg$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: "file-loader",
+                options: {
+                    name: "dist/[name].[ext]",
+                    //publicPath: url => url.replace(/public/, ""),
+                    emit: false
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "css-loader/locals"
+                    }
+                ]
+            },
+            {
+                test: /js$/,
+                exclude: /(node_modules)/,
+                loader: "babel-loader",
+                query: { presets: ["react-app"] }
+            }
+        ]
+    }
+};
+
+module.exports = [browserConfig, serverConfig];
