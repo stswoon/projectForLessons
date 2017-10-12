@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.angular</groupId>
+    <artifactId>module2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>module2</name>
+
+    <!--<parent>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+    <!--<version>1.5.7.RELEASE</version>-->
+    <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+    <!--</parent>-->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter</artifactId>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-test</artifactId>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.example.angular</groupId>
+            <artifactId>module1</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--<plugin>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+
+            <!-- Helps to run gulp task before war packaging -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>prepare-war</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--<overlays>-->
+                        <!--&lt;!&ndash; WARN! Overlays are applied with a first-win strategy (hence if a file has been copied by one overlay, it won't be copied by another). &ndash;&gt;-->
+                        <!--<overlay>-->
+                            <!--<groupId>com.example.angular</groupId>-->
+                            <!--<artifactId>module1</artifactId>-->
+                            <!--<includes>-->
+                                <!--<include>src/**</include>-->
+                            <!--</includes>-->
+                            <!--<targetPath>overlay</targetPath>-->
+                            <!--&lt;!&ndash;<overWrite>true</overWrite>&ndash;&gt;-->
+                        <!--</overlay>-->
+                    <!--</overlays>-->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <useCache>true</useCache>
+                    <warSourceExcludes>node/**,node_modules/**,package.json,Gulpfile.js</warSourceExcludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.example.angular</groupId>
+                                    <artifactId>module1</artifactId>
+                                    <version>0.0.1-SNAPSHOT</version>
+                                    <type>war</type>
+                                    <overWrite>true</overWrite>
+                                    <includes>src/**</includes>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/module2-0.0.1-SNAPSHOT/override</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy todir="${project.basedir}/target/module2-0.0.1-SNAPSHOT/src" overwrite="true">
+                                    <fileset dir="${project.basedir}/target/module2-0.0.1-SNAPSHOT/override/src" includes="**/*" />
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Run Gulp task to Minify and Uglify js files -->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.4</version>
+
+                <configuration>
+                    <workingDirectory>src/main/webapp</workingDirectory>
+                    <installDirectory>target</installDirectory>
+                    <outputdir>target</outputdir>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v6.10.1</nodeVersion>
+                            <npmVersion>3.10.10</npmVersion>
+                            <failOnError>true</failOnError>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>npm install</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                            <failOnError>true</failOnError>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>gulp build</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run gulp</arguments>
+                            <failOnError>true</failOnError>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

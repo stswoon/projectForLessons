@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example.angular</groupId>
+	<artifactId>module1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>module1</name>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+
+	<build>
+		<plugins>
+			<!-- Helps to run gulp task before war packaging -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>prepare-war</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>exploded</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<useCache>true</useCache>
+					<warSourceExcludes>node/**,node_modules/**,package.json,Gulpfile.js</warSourceExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
