@@ -3,22 +3,25 @@ import {NgModule} from "@angular/core";
 
 
 import {AppComponent} from "./app.component";
-import {HelloWorldComponent} from "./hello-world/hello-world.component";
-import {UserItemComponent} from "./user-item/user-item.component";
-import {UserListComponent} from "./user-list/user-list.component";
-import {ArticleComponent} from "./article/article.component";
+import {RouterModule, Routes} from "@angular/router";
+import {HomeComponent} from "./home/home.component";
+import {AboutComponent} from "./about/about.component";
 
+const routes: Routes = [
+  {path: "", redirectTo: "home", pathMatch: "full"},
+  {path: "home", component: HomeComponent},
+  {path: "about/:text", component: AboutComponent},
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloWorldComponent,
-    UserItemComponent,
-    UserListComponent,
-    ArticleComponent
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

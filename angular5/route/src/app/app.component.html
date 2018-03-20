@@ -1,26 +1,11 @@
-<form class="ui large form segment grey">
-  <h3 class="ui header">Add a Link</h3>
+<div>
+  <a [routerLink]="['/home']">Home</a>
+  <a [routerLink]="['/about/me']">About me</a>
+  <a [routerLink]="['/about', 'you']">About you</a>
+</div>
 
-  <div class="field">
-    <label for="title">Title:</label>
-    <input id="title" #newtitle>
-  </div>
-  <div class="field">
-    <label for="link">Link:</label>
-    <input id="link" #newlink>
-  </div>
-</form>
+<br/>
 
-<button (click)="addArticle(newtitle, newlink)" class="ui positive right floated button">Submit link</button>
-
-
-
-
-<app-article></app-article>
-
-
-
-
-<app-hello-world></app-hello-world>
-
-<app-user-list></app-user-list>
+<div>
+  <router-outlet></router-outlet>
+</div>
