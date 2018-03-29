@@ -3,6 +3,7 @@ import {NgModule} from "@angular/core";
 
 import {AppComponent} from "./app.component";
 import {messageServiceInjectables} from "./message/messages.service";
+import {threadServiceInjectables} from "./thread/threads.service";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {messageServiceInjectables} from "./message/messages.service";
     BrowserModule,
   ],
   providers: [
-    messageServiceInjectables
+    messageServiceInjectables, threadServiceInjectables
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,7 @@ describe("MessageService", () => {
       console.log("New message: " + message.text);
     });
     messagesService.messages.subscribe((messages: Message[]) => {
-      console.log("Messages length: " + messages.length);
+      console.log("=> Messages length: " + messages.length);
     });
 
     messagesService.addMessage(m1);

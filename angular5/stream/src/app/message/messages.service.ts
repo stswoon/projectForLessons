@@ -44,6 +44,8 @@ export class MessagesService {
       )
       .subscribe(this.updates);
 
+    this.newMessages.subscribe(this.creates);
+
     // similarly makeThreadAsRead takes Thread, create an operation, subscribe update
     this.makeThreadAsRead
       .map((thread: Thread) => (messages: Message[]) => messages.map((message: Message) => {
