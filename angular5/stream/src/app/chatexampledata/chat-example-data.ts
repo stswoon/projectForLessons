@@ -1,8 +1,10 @@
+//get from https://github.com/ng-book/angular2-rxjs-chat/tree/master/src/app
+
 import {UsersService} from "../user/users.service";
 import {ThreadsService} from "../thread/threads.service";
 import {MessagesService} from "../message/messages.service";
 import {Message} from "../message/message.model";
-import moment = require("moment");
+import * as moment from 'moment';
 import {Thread} from "../thread/thread.model";
 import {User} from "../user/user.model";
 
