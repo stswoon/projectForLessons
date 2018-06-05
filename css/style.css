@@ -1,3 +1,56 @@
-body {
-	background-color: #D8C7F2;
+/*-----Common settings-----*/
+
+/* Got from https://fonts.google.com/specimen/Poppins?selection.family=Poppins*/
+@font-face {
+    font-family: "Poppins";
+    src: url("3rdparty/Poppins-Regular.ttf") format("truetype");
 }
+body {
+	font-family: "Poppins", sans-serif;
+}
+* {
+	padding: 0;
+	margin: 0;
+}
+li {
+	list-style: none;
+	display: flex;
+}
+a {
+	text-decoration: none;
+}
+
+
+
+/*-----Header start-----*/
+
+header {
+	background: #f6f6f6;
+	padding: 22px 0;
+}
+.header-container {
+	width: 1400px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header-container a {
+	color: #000;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 27px 6px;
+}
+.header-container a:hover {
+	background: #ffea00
+}
+#menu-checkbox {
+	display: none;
+}
+.main-menu {
+	display: flex;
+}
+.main-menu li + li {
+	margin-left: 63px;
+}
+
