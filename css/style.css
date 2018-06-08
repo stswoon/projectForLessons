@@ -29,7 +29,9 @@ header {
 	padding: 22px 0;
 }
 .header-container {
-	width: 1400px;
+	width: 90%;
+	min-width: 900px;
+	max-width: 1400px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -54,3 +56,89 @@ header {
 	margin-left: 63px;
 }
 
+@media screen and (min-width: 421px) and (max-width: 900px) {
+	/*
+	.main-menu a {
+		color: red;
+	}
+	*/
+	.header-container {
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+	}
+	.header-container nav {
+		width: 100%;
+		margin-left: 30px;
+	}
+	.main-menu {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.main-menu li + li {
+		margin-left: 0;
+	}	
+}
+
+@media screen and (max-width: 420px) {
+	/*
+	.main-menu a {
+		color: blue;
+	}
+	*/	
+	.header-container {
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+		justify-content: space-around;
+	}
+	.main-menu {
+		display: none;
+	}
+	.main-menu li {
+		width: 100%;
+		display: block;
+		font-size: 12px;
+	}
+	.main-menu li + li {
+		margin-left: 0;
+	}	
+	.main-menu a {
+		display: block;
+		padding: 8px;
+	}
+	.toogle-button {
+		text-align: center;
+		display: block;
+		cursor: pointer;
+		color: #000;
+		margin-right: 80px;
+	}
+	.toogle-button:after {
+		/*content: attr(data-open);*/
+		content: "";
+		background: url("img/menu.svg") no-repeat;
+		background-size: contain;
+		width: 20px;
+    	height: 20px;
+		display: block;
+	}
+	#menu-checkbox:checked + nav[role="navigation"] .main-menu {
+		display: block;
+	}
+	/*
+	#menu-checkbox:checked + nav[role="navigation"] .toogle-button:after {
+		display: block;
+		/*content: attr(data-close);*/
+	}
+	*/
+	.header-container a {
+		/*margin-right: -65px;*/
+	}
+	.main-menu {
+		position: relative;
+		height: 0;
+		top:30px;
+		right: 10px;
+	}
+}
