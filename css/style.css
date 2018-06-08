@@ -93,7 +93,7 @@ header {
 		justify-content: space-around;
 	}
 	.main-menu {
-		display: none;
+		/*display: none;*/		
 	}
 	.main-menu li {
 		width: 100%;
@@ -136,9 +136,27 @@ header {
 		/*margin-right: -65px;*/
 	}
 	.main-menu {
+		/*
 		position: relative;
 		height: 0;
 		top:30px;
 		right: 10px;
+		*/
+		position: absolute;
+		margin-top: 10px;
+		border: 1px solid #000;		
 	}
+	.main-menu {
+		overflow: hidden;
+		visibility: hidden; /*for animation*/
+		height: 0;
+		transition: height 1s;
+	}
+	#menu-checkbox:checked + nav[role="navigation"] .main-menu {		
+		/*height: 205px;*/
+		height: 12.5em;
+		visibility: visible;
+	}	
 }
+
+/*todo: animation for burger*/
