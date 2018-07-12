@@ -56,12 +56,7 @@ header {
 	margin-left: 63px;
 }
 
-@media screen and (min-width: 421px) and (max-width: 900px) {
-	/*
-	.main-menu a {
-		color: red;
-	}
-	*/
+@media screen and (min-width: 531px) and (max-width: 900px) {
 	.header-container {
 		width: 100%;
 		min-width: 100%;
@@ -80,20 +75,13 @@ header {
 	}	
 }
 
-@media screen and (max-width: 420px) {
-	/*
-	.main-menu a {
-		color: blue;
-	}
-	*/	
+
+@media screen and (max-width: 530px) {	
 	.header-container {
 		width: 100%;
 		min-width: 100%;
 		max-width: 100%;
 		justify-content: space-around;
-	}
-	.main-menu {
-		/*display: none;*/		
 	}
 	.main-menu li {
 		width: 100%;
@@ -114,8 +102,7 @@ header {
 		color: #000;
 		margin-right: 80px;
 	}
-	.toogle-button:after {
-		/*content: attr(data-open);*/
+	.toogle-button:after {		
 		content: "";
 		background: url("img/menu.svg") no-repeat;
 		background-size: contain;
@@ -126,37 +113,31 @@ header {
 	#menu-checkbox:checked + nav[role="navigation"] .main-menu {
 		display: block;
 	}
-	/*
-	#menu-checkbox:checked + nav[role="navigation"] .toogle-button:after {
-		display: block;
-		/*content: attr(data-close);*/
-	}
-	*/
-	.header-container a {
-		/*margin-right: -65px;*/
-	}
 	.main-menu {
-		/*
-		position: relative;
-		height: 0;
-		top:30px;
-		right: 10px;
-		*/
 		position: absolute;
 		margin-top: 10px;
 		border: 1px solid #000;		
 	}
 	.main-menu {
 		overflow: hidden;
-		visibility: hidden; /*for animation*/
+		visibility: hidden; 
 		height: 0;
 		transition: height 1s;
 	}
 	#menu-checkbox:checked + nav[role="navigation"] .main-menu {		
-		/*height: 205px;*/
 		height: 12.5em;
 		visibility: visible;
 	}	
+
+	#menu-checkbox:checked + nav[role="navigation"] .toogle-button {
+		animation-name: burger-anim;
+    	animation-duration: 1s;
+    	animation-iteration-count: 1;
+	}
+
+	@keyframes burger-anim {    	
+    	100% {transform: rotate(360deg)}
+	}
 }
 
-/*todo: animation for burger*/
+/* https://www.youtube.com/watch?v=rIDr5TaRSes&list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt&index=3 */
