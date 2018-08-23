@@ -140,4 +140,35 @@ header {
 	}
 }
 
-/* https://www.youtube.com/watch?v=rIDr5TaRSes&list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt&index=3 */
+
+/*-----Main start-----*/
+
+.top-slide {
+	background-size: cover;
+	background: #ece5dc url("img/slider_bg.jpg") no-repeat center;
+	padding-top: 120px;
+	padding-bottom: 280px;
+}
+.top-container {
+	width: 85%;
+	margin: 0 auto;
+}
+.top-slide h2{
+	background: yellow;
+	display: inline;
+	font-size: 50px;
+	text-transform: uppercase;
+	padding: 0 13px;
+}
+.top-slide :nth-child(2) {
+	margin-bottom: 10px;
+}
+.top-slide p {
+	display: inline;
+	background: #201f20;
+	font-size: 20px;
+	padding: 0 4px;
+	color: #FFFFFF;
+}
+
+/* https://youtu.be/rIDr5TaRSes?list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt&t=325 */
