@@ -5,170 +5,349 @@
     font-family: "Poppins";
     src: url("3rdparty/Poppins-Regular.ttf") format("truetype");
 }
+
 body {
-	font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
+
 * {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 li {
-	list-style: none;
-	display: flex;
+    list-style: none;
+    display: flex;
 }
+
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
-
-
 
 /*-----Header start-----*/
 
 header {
-	background: #f6f6f6;
-	padding: 22px 0;
+    background: #f6f6f6;
+    padding: 22px 0;
 }
+
 .header-container {
-	width: 90%;
-	min-width: 900px;
-	max-width: 1400px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    width: 90%;
+    min-width: 900px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .header-container a {
-	color: #000;
-	font-size: 16px;
-	text-transform: uppercase;
-	padding: 27px 6px;
+    color: #000;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 27px 6px;
 }
+
 .header-container a:hover {
-	background: #ffea00
+    background: #ffea00
 }
+
 #menu-checkbox {
-	display: none;
+    display: none;
 }
+
 .main-menu {
-	display: flex;
+    display: flex;
 }
+
 .main-menu li + li {
-	margin-left: 63px;
+    margin-left: 63px;
 }
 
 @media screen and (min-width: 531px) and (max-width: 900px) {
-	.header-container {
-		width: 100%;
-		min-width: 100%;
-		max-width: 100%;
-	}
-	.header-container nav {
-		width: 100%;
-		margin-left: 30px;
-	}
-	.main-menu {
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
-	.main-menu li + li {
-		margin-left: 0;
-	}	
+    .header-container {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .header-container nav {
+        width: 100%;
+        margin-left: 30px;
+    }
+
+    .main-menu {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .main-menu li + li {
+        margin-left: 0;
+    }
 }
 
+@media screen and (max-width: 530px) {
+    .header-container {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        justify-content: space-around;
+    }
 
-@media screen and (max-width: 530px) {	
-	.header-container {
-		width: 100%;
-		min-width: 100%;
-		max-width: 100%;
-		justify-content: space-around;
-	}
-	.main-menu li {
-		width: 100%;
-		display: block;
-		font-size: 12px;
-	}
-	.main-menu li + li {
-		margin-left: 0;
-	}	
-	.main-menu a {
-		display: block;
-		padding: 8px;
-	}
-	.toogle-button {
-		text-align: center;
-		display: block;
-		cursor: pointer;
-		color: #000;
-		margin-right: 80px;
-	}
-	.toogle-button:after {		
-		content: "";
-		background: url("img/menu.svg") no-repeat;
-		background-size: contain;
-		width: 20px;
-    	height: 20px;
-		display: block;
-	}
-	#menu-checkbox:checked + nav[role="navigation"] .main-menu {
-		display: block;
-	}
-	.main-menu {
-		position: absolute;
-		margin-top: 10px;
-		border: 1px solid #000;		
-	}
-	.main-menu {
-		overflow: hidden;
-		visibility: hidden; 
-		height: 0;
-		transition: height 1s;
-	}
-	#menu-checkbox:checked + nav[role="navigation"] .main-menu {		
-		height: 12.5em;
-		visibility: visible;
-	}	
+    .main-menu li {
+        width: 100%;
+        display: block;
+        font-size: 12px;
+    }
 
-	#menu-checkbox:checked + nav[role="navigation"] .toogle-button {
-		animation-name: burger-anim;
-    	animation-duration: 1s;
-    	animation-iteration-count: 1;
-	}
+    .main-menu li + li {
+        margin-left: 0;
+    }
 
-	@keyframes burger-anim {    	
-    	100% {transform: rotate(360deg)}
-	}
+    .main-menu a {
+        display: block;
+        padding: 8px;
+    }
+
+    .toogle-button {
+        text-align: center;
+        display: block;
+        cursor: pointer;
+        color: #000;
+        margin-right: 80px;
+    }
+
+    .toogle-button:after {
+        content: "";
+        background: url("img/menu.svg") no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+
+    #menu-checkbox:checked + nav[role="navigation"] .main-menu {
+        display: block;
+    }
+
+    .main-menu {
+        position: absolute;
+        margin-top: 10px;
+        border: 1px solid #000;
+    }
+
+    .main-menu {
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+        transition: height 1s;
+    }
+
+    #menu-checkbox:checked + nav[role="navigation"] .main-menu {
+        height: 12.5em;
+        visibility: visible;
+    }
+
+    #menu-checkbox:checked + nav[role="navigation"] .toogle-button {
+        animation-name: burger-anim;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes burger-anim {
+        100% {
+            transform: rotate(360deg)
+        }
+    }
 }
-
 
 /*-----Main start-----*/
 
 .top-slide {
-	background-size: cover;
-	background: #ece5dc url("img/slider_bg.jpg") no-repeat center;
-	padding-top: 120px;
-	padding-bottom: 280px;
-}
-.top-container {
-	width: 85%;
-	margin: 0 auto;
-}
-.top-slide h2{
-	background: yellow;
-	display: inline;
-	font-size: 50px;
-	text-transform: uppercase;
-	padding: 0 13px;
-}
-.top-slide :nth-child(2) {
-	margin-bottom: 10px;
-}
-.top-slide p {
-	display: inline;
-	background: #201f20;
-	font-size: 20px;
-	padding: 0 4px;
-	color: #FFFFFF;
+    background-size: cover;
+    background: #ece5dc url("img/slider_bg.jpg") no-repeat center;
+    padding-top: 120px;
+    padding-bottom: 280px;
 }
 
-/* https://youtu.be/rIDr5TaRSes?list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt&t=325 */
+.top-container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.top-slide h2 {
+    background: #ffea00;
+    display: inline;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding: 0 13px;
+}
+
+.top-slide :nth-child(2) {
+    margin-bottom: 10px;
+}
+
+.top-slide p {
+    display: inline;
+    background: #201f20;
+    font-size: 20px;
+    padding: 0 4px;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 530px) {
+    .top-slide {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .top-slide h2 {
+        font-size: 32px;
+    }
+    .top-slide p {
+        font-size: 16px;
+    }
+}
+
+/*-----Cards start-----*/
+
+.specialize-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.specialize-container h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.specialize-container p.description {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bottom-card {
+    background: #201f20;
+}
+
+.specialize-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.specialize-cards .top-card {
+    background-color: #ffea00;
+}
+
+.specialize-cards .card img {
+    display: block; /*https://stackoverflow.com/a/11126701*/
+    margin: 0 auto;
+}
+
+.specialize-cards .card p {
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    color: #FFFFFF;
+}
+
+.specialize-cards .card p.first-p {
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.specialize-cards .bottom-card {
+    /*https://css-tricks.com/centering-css-complete-guide/*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 94px;
+}
+
+@media screen and (max-width: 530px) {
+    .specialize-container h3 {
+        font-size: 24px;
+    }
+    .specialize-container p {
+        font-size: 16px;
+    }
+    .specialize-container p.description {
+        font-size: 16px;
+    }
+    .specialize-cards {
+        flex-direction: column;
+    }
+    /*
+    .specialize-cards.bottom-card {
+        width: 250px;
+        margin: 0 auto;
+    }
+    */
+}
+
+/*-----Portfolio start-----*/
+.portfolio {
+    width: 90%;
+    margin: 70px auto 0px auto;
+    text-align: center;
+}
+
+.portfolio h4 {
+    background: #201f20;
+    padding: 0 8px;
+    display: inline-block;
+    color: #e6e135;
+    font-size: 16px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.portfolio p {
+    color: #424146;
+    font-size: 14px;
+}
+
+.toggles button {
+    text-transform: uppercase;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 5px;
+}
+
+.toggles button:after {
+    content: "/";
+    padding-left: 10px;
+}
+
+.toggles button:last-child:after {
+    content: "";
+}
+
+.posts {
+    width: 90%;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto;
+}
+
+@media screen and (max-width: 530px) {
+    .posts {
+        grid-template-columns: auto;
+    }
+}
+
+@media screen and (min-width: 531px) and (max-width: 900px) {
+    .posts {
+        grid-template-columns: auto auto;
+    }
+}
+
+/* https://www.youtube.com/watch?v=4vvDaRA1jNY&index=6&list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt */
+
+/*
+todo small fixes for media
+*/
