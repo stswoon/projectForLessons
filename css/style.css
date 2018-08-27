@@ -200,9 +200,11 @@ header {
         padding-top: 20px;
         padding-bottom: 20px;
     }
+
     .top-slide h2 {
         font-size: 32px;
     }
+
     .top-slide p {
         font-size: 16px;
     }
@@ -270,15 +272,19 @@ header {
     .specialize-container h3 {
         font-size: 24px;
     }
+
     .specialize-container p {
         font-size: 16px;
     }
+
     .specialize-container p.description {
         font-size: 16px;
     }
+
     .specialize-cards {
         flex-direction: column;
     }
+
     /*
     .specialize-cards.bottom-card {
         width: 250px;
@@ -331,23 +337,30 @@ header {
     width: 90%;
     display: grid;
     margin: 0 auto;
-    grid-template-columns: auto auto auto;
+    /*grid-template-columns: auto auto auto;*/
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /*https://stackoverflow.com/questions/43129360/css-grid-wrapping*/
 }
 
-@media screen and (max-width: 530px) {
-    .posts {
-        grid-template-columns: auto;
-    }
+/*-----Slider start-----*/
+.brand-slider {
+    width: 90%;
+    margin: 70px auto 0px auto;
+    text-align: center;
 }
 
-@media screen and (min-width: 531px) and (max-width: 900px) {
-    .posts {
-        grid-template-columns: auto auto;
-    }
+.brand-slider h4 {
+    background: #201f20;
+    padding: 0 8px;
+    display: inline-block;
+    color: #e6e135;
+    font-size: 16px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
-/* https://www.youtube.com/watch?v=4vvDaRA1jNY&index=6&list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt */
+.brand-slider p {
+    color: #424146;
+    font-size: 14px;
+}
 
-/*
-todo small fixes for media
-*/
+/* https://www.youtube.com/watch?v=ze9qlsO8w_g&list=PLVfMKQXDAhGVcNuWQrw8w2ZINnfSZCUkt&index=7 */
