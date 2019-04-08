@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+	<textarea id="log"></textarea>
+	<script>
+		var evtSource = new EventSource('/eventstream');
+		evtSource.addEventListener('message', event => {
+			var data = JSON.parse(event.data);
+			var textarea = document.getElementById("log");
+			textarea.value += data.random + "\n";
+		});
+	</script>
+  </body>
+</html>
