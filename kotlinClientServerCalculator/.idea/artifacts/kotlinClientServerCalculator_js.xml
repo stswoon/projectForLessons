@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="kotlinClientServerCalculator-js">
+    <output-path>C:\_work\projectForLessons\kotlinClientServerCalculator\build\libs</output-path>
+    <root id="archive" name="kotlinClientServerCalculator-js.jar">
+      <element id="module-output" name="kotlinClientServerCalculator.jsMain" />
+    </root>
+  </artifact>
+</component>

@@ -31,3 +31,5 @@
 /angular5/route/node_modules
 /angular5/route/semantic
 /angular5/stream/semantic
+/server-sent-events/node_modules
+/server-sent-events/.idea
