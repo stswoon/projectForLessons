@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  my-nginx-container:
+    build: .
+    image: test-lua-nginx-image
+    container_name: test-lua-nginx-container
+    ports:
+      - "8080:80"
