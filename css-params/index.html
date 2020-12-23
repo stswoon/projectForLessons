@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="bar"></div> <!-- bar with no color because css-param declared in my-component-->
+
+<br/>
+
+<my-component>
+	<div class="bar"></div> <!-- bar with red color as css-param -->
+</my-component>
+
+<br/>
+
+<custom>
+	<my-component>
+		<div class="bar"></div> <!-- bar with blue color as overrided css-param -->
+	</my-component>
+<custom>
+
+<br/>
+
+<my-component class="custom">
+	<div class="bar"></div> <!-- bar with blue green as overrided css-param -->
+</my-component>
+
+</body>
+</html>

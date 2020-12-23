@@ -1,0 +1,36 @@
+.grid-item {
+	border: 5px solid;
+}
+
+.header {
+	grid-area: header;
+}
+.footer {
+	grid-area: footer;
+}
+.navbar {
+	grid-area: navbar;
+}
+.article {
+	grid-area: article;
+}
+.ads {
+	grid-area: ads;
+}
+
+
+.grid {
+	width: 800px;
+    height: 600px;
+	border: 5px solid red;
+	
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"navbar article article" 
+		"ads ads footer"; 
+	grid-template-rows: 60px 1fr 30px;
+	grid-template-columns: 20% 1fr 1fr;
+	
+	grid-gap: 10px;
+}

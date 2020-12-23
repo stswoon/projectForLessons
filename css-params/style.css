@@ -1,0 +1,18 @@
+.bar {
+	width: 100px;
+	height: 50px;
+	border: 1px solid;
+	background-color: var(--my-color);
+}
+
+my-component {
+	--my-color: red
+}
+
+custom my-component {
+	--my-color: blue
+}
+
+.custom {
+	--my-color: green
+}
