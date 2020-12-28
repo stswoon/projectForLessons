@@ -33,3 +33,6 @@
 /angular5/stream/semantic
 /server-sent-events/node_modules
 /server-sent-events/.idea
+/infinite loop/.idea
+/infinite loop/target/classes
+/infinite loop/infiniteloop.iml
