@@ -3,7 +3,7 @@ import {getHelloWorldGithubIssuesUrl, ITEMS_PER_PAGE, START_PAGE} from "./consta
 import {convertResponseToStructure} from "./utils.ts";
 import type {Issue} from "./models.ts";
 
-export function useIssues(creator: string) {
+export const useIssues = (creator: string) => {
     const [page, setPage] = useState<number>(START_PAGE);
 
     useEffect(() => setPage(START_PAGE), [creator]);
@@ -13,6 +13,7 @@ export function useIssues(creator: string) {
             try {
                 setIssues([]);
                 setLoading(true);
+
                 const url = getHelloWorldGithubIssuesUrl(page, creator);
                 //TODO: cancel
                 const response = await fetch(url);
@@ -25,6 +26,7 @@ export function useIssues(creator: string) {
                 console.info("Data loaded");
                 // console.log(data);
                 const issues = convertResponseToStructure(data);
+
                 setIssues(issues);
             } catch (e) {
                 setError(e);
@@ -34,6 +36,7 @@ export function useIssues(creator: string) {
         })();
     }, [page, creator])
 
+    //TODO: prev state
     const [issues, setIssues] = useState<Issue[]>([]);
     const [error, setError] = useState<unknown>();
     const [loading, setLoading] = useState<boolean>(false);

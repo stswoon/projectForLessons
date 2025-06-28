@@ -17,6 +17,7 @@ export type DebounceType<T extends Function> = (callback: T, ms: number) => T;
 
 // export type DebounceType<T extends (...args: any[]) => any> = (...args: Parameters<T>): ReturnType<T> | void;
 
+//TODO: typyzation
 export const debounce: DebounceType<any> = (callback: Function, ms: number) => {
     let timeoutId: ReturnType<typeof setTimeout>;
     return (...args: any[]) => {

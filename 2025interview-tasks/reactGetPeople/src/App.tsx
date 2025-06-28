@@ -1,8 +1,9 @@
-import {memo, useEffect, useMemo, useState} from 'react'
+import {memo, useEffect, useState} from 'react'
 import {Issues} from "./Issues.tsx";
 import {useIssues} from "./useIssues.ts";
 import {debounce} from "./utils.ts";
 
+//TODO: move to separate component
 function App() {
     // const handleChangeCreator = useCallback((creator: string) => {
     //     setCreator(creator);
@@ -16,7 +17,7 @@ function App() {
     const [searchCreator, setSearchCreator] = useState<string>(creator);
     const {issues, loading, error, disablePrevious, previousPage, nextPage, disableNext} = useIssues(searchCreator);
 
-    //TODO
+    //TODO: debounce
     useEffect(() => {
         debounce((creator: string) => {
             setSearchCreator(creator)
