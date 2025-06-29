@@ -1,10 +1,10 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {getHelloWorldGithubIssuesUrl, ITEMS_PER_PAGE, START_PAGE} from "./constants.ts";
 import {convertResponseToStructure} from "./utils.ts";
 import type {Issue} from "./models.ts";
 
 export const useIssues = (creator: string) => {
-    const [abortController, setAbortController] = useState<AbortController>();
+    const abortControllerRef = useRef<AbortController>(undefined);
 
     const [page, setPage] = useState<number>(START_PAGE);
     useEffect(() => setPage(START_PAGE), [creator]);
@@ -18,14 +18,14 @@ export const useIssues = (creator: string) => {
 
                 const url = getHelloWorldGithubIssuesUrl(page, creator);
 
-                if (abortController) {
-                    abortController.abort("Abort previous request because of new request");
+                if (abortControllerRef.current) {
+                    abortControllerRef.current.abort("Abort previous request because of new request");
                     console.log("Request aborted");
                 }
                 const controller = new AbortController();
-                setAbortController(controller);
+                abortControllerRef.current = controller;
                 const response = await fetch(url, {method: "get", signal: controller.signal});
-                setAbortController(undefined);
+                abortControllerRef.current = undefined;
 
                 if (response.status >= 400) {
                     throw new Error(response.statusText);
@@ -39,7 +39,10 @@ export const useIssues = (creator: string) => {
                 const issues = convertResponseToStructure(data);
                 setIssues(issues);
             } catch (e) {
-                setError(e);
+                // setError(e);
+                if (e !== "Abort previous request because of new request") {
+                    setError(e);
+                }
             } finally {
                 setLoading(false);
             }
