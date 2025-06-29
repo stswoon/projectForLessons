@@ -14,11 +14,12 @@ export const useIssues = (creator: string) => {
             try {
                 setIssues([]);
                 setLoading(true);
+                setError(undefined)
 
                 const url = getHelloWorldGithubIssuesUrl(page, creator);
 
-                if(abortController) {
-                    abortController.abort("new request");
+                if (abortController) {
+                    abortController.abort("Abort previous request because of new request");
                     console.log("Request aborted");
                 }
                 const controller = new AbortController();

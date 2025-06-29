@@ -1,7 +1,7 @@
-import {type ChangeEvent, memo, useCallback, useEffect, useState} from 'react'
+import {type ChangeEvent, memo, useCallback, useState} from 'react'
 import {Issues} from "./Issues.tsx";
 import {useIssues} from "./useIssues.ts";
-import {debounce} from "./utils.ts";
+import {useDebounceValue} from "./useDebounceValue.ts";
 
 export const IssuesWithPagination = memo(() => {
     // const handleChangeCreator = useCallback((creator: string) => {
@@ -12,16 +12,13 @@ export const IssuesWithPagination = memo(() => {
     //     return debounce((creator: string) => setCreator(creator), 1000)
     // }, []);
 
-    const [creator, setCreator] = useState<string>("");
-    const [searchCreator, setSearchCreator] = useState<string>(creator);
-    const {issues, loading, error, disablePrevious, previousPage, nextPage, disableNext} = useIssues(searchCreator);
+    // useEffect(() => {
+    //     debounce((creator: string) => {
+    //         setSearchCreator(creator);
+    //     }, 5000)(creator)
+    // }, [creator])
 
-    //TODO: debounce
-    useEffect(() => {
-        debounce((creator: string) => {
-            setSearchCreator(creator);
-        }, 1000)(creator)
-    }, [creator])
+    const [creator, setCreator] = useState<string>("");
 
     const handleCreatorOnChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const creator = e.target.value;
@@ -29,7 +26,12 @@ export const IssuesWithPagination = memo(() => {
             console.log(`Previous creator was: ${prevCreator}`);
             return creator;
         });
-    }, [setCreator])
+    }, [setCreator]);
+
+    // const searchCreator = useDebounceValue(creator, 3000);
+    const searchCreator = useDebounceValue(creator, 0); // to see how abort works
+
+    const {issues, loading, error, disablePrevious, previousPage, nextPage, disableNext} = useIssues(searchCreator);
 
     return (
         <>

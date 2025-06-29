@@ -18,6 +18,7 @@ export type VoidFunc = (...args: any[]) => void;
 export function debounce<T extends VoidFunc>(callback: T, ms: number): (...args: Parameters<T>) => void {
     let timeoutId: ReturnType<typeof setTimeout>;
     return (...args: Parameters<T>) => {
+        console.log(timeoutId)
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
             callback(...args)
