@@ -28,7 +28,7 @@ export const IssuesWithPagination = memo(() => {
         });
     }, [setCreator]);
 
-    const searchCreator = useDebounceValue(creator, 3000);
+    const searchCreator = useDebounceValue(creator, 500);
     //TODO: uncomment to see how abort works
     // const searchCreator = useDebounceValue(creator, 0);
 
