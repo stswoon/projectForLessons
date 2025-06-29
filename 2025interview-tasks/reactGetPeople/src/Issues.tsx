@@ -11,12 +11,12 @@ export const Issues: FC<IssuesProps> = memo(({issues}) => {
     }
 
     return (
-        <ul>
+        <ul className="taIssues">
             {issues.map(issue => {
                 return (
                     <li key={issue.url}>
-                        <span>${issue.title}</span>
-                        <b>{" (" + issue.user + ")"}</b>
+                        <span>{issue.title}</span>
+                        <span>{" (creator: "}<b>{issue.user}</b>{")"}</span>
                     </li>
                 )
             })}

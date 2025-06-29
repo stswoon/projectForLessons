@@ -4,8 +4,9 @@ import {convertResponseToStructure} from "./utils.ts";
 import type {Issue} from "./models.ts";
 
 export const useIssues = (creator: string) => {
-    const [page, setPage] = useState<number>(START_PAGE);
+    const [abortController, setAbortController] = useState<AbortController>();
 
+    const [page, setPage] = useState<number>(START_PAGE);
     useEffect(() => setPage(START_PAGE), [creator]);
 
     useEffect(() => {
@@ -15,18 +16,26 @@ export const useIssues = (creator: string) => {
                 setLoading(true);
 
                 const url = getHelloWorldGithubIssuesUrl(page, creator);
-                //TODO: cancel
-                const response = await fetch(url);
+
+                if(abortController) {
+                    abortController.abort("new request");
+                    console.log("Request aborted");
+                }
+                const controller = new AbortController();
+                setAbortController(controller);
+                const response = await fetch(url, {method: "get", signal: controller.signal});
+                setAbortController(undefined);
+
                 if (response.status >= 400) {
                     throw new Error(response.statusText);
                 }
+
                 const data = await response.json();
                 // await timeout(2000);
                 // throw new Error("test")
                 console.info("Data loaded");
                 // console.log(data);
                 const issues = convertResponseToStructure(data);
-
                 setIssues(issues);
             } catch (e) {
                 setError(e);
@@ -36,7 +45,6 @@ export const useIssues = (creator: string) => {
         })();
     }, [page, creator])
 
-    //TODO: prev state
     const [issues, setIssues] = useState<Issue[]>([]);
     const [error, setError] = useState<unknown>();
     const [loading, setLoading] = useState<boolean>(false);
