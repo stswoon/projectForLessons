@@ -1,0 +1,18 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-node": "ts-node src/custom-utility-types.ts",
+    "build-and-start": "npm run build && npm run start",
+    "build": "tsc",
+    "start": "node dist/help-types.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
