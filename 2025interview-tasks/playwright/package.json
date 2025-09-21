@@ -7,14 +7,21 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test-e2e": "playwright test --ui --headed --project chromium",
+    "test-e2e:headless": "playwright test --project chromium",
+    "//test-e2e": "playwright test --ui --headed --project chromium --debug",
+    "ci": "start-server-and-test dev http://localhost:5173 test-e2e"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "start-server-and-test": "^2.1.2",
     "@eslint/js": "^9.35.0",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.5.2",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.2",
