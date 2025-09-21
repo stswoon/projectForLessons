@@ -1,6 +1,14 @@
+import UserPosts from "./UserPosts.tsx";
+import AddUser from "./AddUser.tsx";
+
 function App() {
     return (
-        <h1>App</h1>
+        <>
+            <h1>GQL App</h1>
+            <UserPosts/>
+            <hr/>
+            <AddUser/>
+        </>
     )
 }
 
