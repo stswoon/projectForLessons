@@ -1,1 +1,30 @@
-<div class="taApp">{{ title() }}</div>
+<div class="taApp">
+
+  <input [(ngModel)]="query" (ngModelChange)="handleQueryChange()" placeholder="Search users"/>
+
+  <span>
+    <button (click)="previous()" [disabled]="page <= 1">Prev</button>
+    <span>{{ page }} / {{ totalPages }}</span>
+    <button (click)="next()" [disabled]="page >= totalPages">Next</button>
+  </span>
+
+  @if (loading) {
+
+    <div>Loading...</div>
+
+  } @else if (hasError) {
+
+    <div>Failed to load</div>
+
+  } @else {
+
+    @for (user of users; track user.id) {
+      <div>
+        <span>{{ user.firstName }}</span>&nbsp;<b>{{ user.lastName }}</b>
+      </div>
+    } @empty {
+      <p>No found users.</p>
+    }
+
+  }
+</div>
