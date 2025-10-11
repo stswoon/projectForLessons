@@ -6,7 +6,7 @@ import {SearchUsers2} from '../serach-users-2/search-users-2';
   selector: 'app-root',
   templateUrl: './app.html',
   imports: [
-    SearchUsers,
+    // SearchUsers,
     SearchUsers2
   ],
   styleUrl: './app.css'

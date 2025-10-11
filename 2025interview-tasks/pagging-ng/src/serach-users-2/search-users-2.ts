@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, of, Subscription, switchMap} from 'rxjs';
 
-//todo: service, signal in ngInit
+//todo: signal in ngInit
 
 interface User {
   id: string;
@@ -55,7 +55,6 @@ export class SearchUsers2 implements OnInit, OnDestroy {
   query = '';
   loading: boolean = false;
   hasError: boolean = false;
-  //$users?: Observable<User[]>;
   users?: User[];
 
   totalPages: number = 0;
@@ -66,10 +65,9 @@ export class SearchUsers2 implements OnInit, OnDestroy {
   }
 
   debouncedFn = debounce(() => {
+    this.page = 1;
     this.doSearch();
   });
-
-  //todo: if new query make page = 0
 
   handleQueryChange() {
     console.log(`change query = |${this.query}|`);
@@ -91,9 +89,6 @@ export class SearchUsers2 implements OnInit, OnDestroy {
       error: (err => {
         alert("Unpredictable Error");
         console.error("Failed to load: ", err)
-        // this.hasError = !!err;
-        // this.loading = false;
-        // this.users = [];
       })
     }));
   }
