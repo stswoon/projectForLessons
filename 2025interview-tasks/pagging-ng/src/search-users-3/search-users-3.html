@@ -1,0 +1,34 @@
+<div class="taSearchUsers3">
+
+  <input [(ngModel)]="query" placeholder="Search users"/>
+
+  <ng-container>
+  @let response = $searchUsersServiceResponse | async;
+  <span>
+    <button (click)="previous()" [disabled]="page() <= 1">Prev</button>
+    <span>{{ page() }} / {{ response?.data?.totalPages ?? 0 }}</span>
+    <button (click)="next()" [disabled]="page() >= (response?.data?.totalPages ?? 0)">Next</button>
+  </span>
+
+    @if (response?.loading) {
+
+      <div>Loading...</div>
+
+    } @else if (response?.error) {
+
+      <div>Failed to load</div>
+
+    } @else {
+
+      @for (user of response?.data?.users; track user.id) {
+        <div>
+          <span>{{ user.firstName }}</span>&nbsp;<b>{{ user.lastName }}</b>
+        </div>
+      } @empty {
+        <p>No found users.</p>
+      }
+
+    }
+  </ng-container>
+
+</div>
