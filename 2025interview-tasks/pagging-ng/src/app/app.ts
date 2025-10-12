@@ -9,7 +9,10 @@ import {SearchUsers3} from '../search-users-3/search-users-3';
   imports: [
     // SearchUsers,
     // SearchUsers2,
-    SearchUsers3
+    SearchUsers3,
+    SearchUsers2,
+    SearchUsers,
+    // SearchUsers2
   ],
   styleUrl: './app.css'
 })

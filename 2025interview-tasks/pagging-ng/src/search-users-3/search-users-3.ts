@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {
   BehaviorSubject,
   catchError,
-  combineLatest,
+  combineLatest, concat,
   debounceTime,
   map,
   Observable,
@@ -35,16 +35,18 @@ class SearchUsersService {
 
   getUsers(query: string, page: number): Observable<SearchUsersServiceResponse> {
     const url = getUrl(query, page);
-    // const $httpRequest = this.http.get(url);
-    const $response = new BehaviorSubject<SearchUsersServiceResponse>({loading: true})
-    return $response.pipe(
-      switchMap((_) => this.http.get(url)),
-      map((rawResponse: any) => convertToUsers(rawResponse)),
-      map(data => ({loading: false, data})),
-      catchError((err) => {
-        console.error("Failed to load: ", err)
-        return of({loading: false, error: err});
-      })
+    const $httpRequest = this.http.get(url);
+
+    return concat(
+      of({loading: true}),
+      $httpRequest.pipe(
+        map((rawResponse: any) => convertToUsers(rawResponse)),
+        map(data => ({loading: false, data})),
+        catchError((err) => {
+          console.error("Failed to load: ", err)
+          return of({loading: false, error: err});
+        })
+      )
     )
   }
 }
@@ -86,6 +88,9 @@ export class SearchUsers3 implements OnInit {
       switchMap(([query, page]) => {
         console.log(`Load data with query=${query}, page=${page}`)
         return this.searchUsersService.getUsers(query, page)
+      }),
+      tap(value => {
+        console.log("response value=", value);
       })
     )
   }
@@ -96,6 +101,10 @@ export class SearchUsers3 implements OnInit {
 
   next() {
     this.page.set(this.page() + 1);
+  }
+
+  handleQueryChange() {
+    this.page.set(1);
   }
 }
 

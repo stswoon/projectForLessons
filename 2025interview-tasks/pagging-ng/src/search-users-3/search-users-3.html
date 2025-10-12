@@ -1,16 +1,17 @@
 <div class="taSearchUsers3">
 
-  <input [(ngModel)]="query" placeholder="Search users"/>
+  <input [(ngModel)]="query" placeholder="Search users" (ngModelChange)="handleQueryChange()"/>
 
   <ng-container>
-  @let response = $searchUsersServiceResponse | async;
-  <span>
-    <button (click)="previous()" [disabled]="page() <= 1">Prev</button>
-    <span>{{ page() }} / {{ response?.data?.totalPages ?? 0 }}</span>
-    <button (click)="next()" [disabled]="page() >= (response?.data?.totalPages ?? 0)">Next</button>
-  </span>
+    @let response = $searchUsersServiceResponse | async;
 
-    @if (response?.loading) {
+    <span>
+      <button (click)="previous()" [disabled]="page() <= 1">Prev</button>
+      <span>{{ page() }} / {{ response?.data?.totalPages ?? 0 }}</span>
+      <button (click)="next()" [disabled]="page() >= (response?.data?.totalPages ?? 0)">Next</button>
+    </span>
+
+    @if (response?.loading === true || response?.loading == undefined) {
 
       <div>Loading...</div>
 

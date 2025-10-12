@@ -1,7 +1,7 @@
 import {Component, inject, Injectable, OnDestroy, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, catchError, map, Observable, of, Subscription, switchMap} from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, of, Subject, Subscription, switchMap} from 'rxjs';
 
 //todo: signal in ngInit
 
@@ -28,6 +28,7 @@ class SearchUsersService {
     const url = getUrl(query, page);
     // const $httpRequest = this.http.get(url);
     const $response = new BehaviorSubject<SearchUsersServiceResponse>({loading: true})
+    // const $response = new Subject<SearchUsersServiceResponse>()
     return $response.pipe(
       switchMap((_) => this.http.get(url)),
       map((rawResponse: any) => convertToUsers(rawResponse)),
