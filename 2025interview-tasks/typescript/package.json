@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-node": "ts-node src/custom-utility-types.ts",
+    "start-node-2": "ts-node src/test2.ts",
     "build-and-start": "npm run build && npm run start",
     "build": "tsc",
     "start": "node dist/help-types.js"
