@@ -1,12 +1,17 @@
-import {useState, useEffect, useCallback, useRef} from "react";
+import {useState, useEffect, useCallback, useRef, createContext, useContext} from "react";
+
+
 
 export default function App() {
     return (
         <div className="App">
-            <SearchUsers/>
+            <ThemeProvider initTheme={'dark'}>
+                <SearchUsers/>
+            </ThemeProvider>
         </div>
     );
 }
+
 
 function usePrevious(value) {
     const ref = useRef(null);
@@ -120,21 +125,28 @@ function SearchUsers() {
     const handleClickNext = useCallback(() => setPage(page + 1), [page, setPage]);
     const handleClickPrev = useCallback(() => setPage(page - 1), [page, setPage]);
 
-    return (
-        <div className="SearchUsers">
-            <input
-                placeholder="Find by name"
-                value={query}
-                onChange={handleSearchChange}
-            />
+    const {theme, toggleTheme} = useThemeContext();
 
-            <button onClick={handleClickPrev} disabled={page <= 1}>
-                Prev
-            </button>
-            <span>{page}/{totalPages}</span>
-            <button onClick={handleClickNext} disabled={page >= totalPages}>
-                Next
-            </button>
+    return (
+        <div className="SearchUsers" style={{backgroundColor: theme === 'dark' ? "gray" : undefined}}>
+            <div>
+                <button onClick={toggleTheme}>Switch to {theme === 'dark' ? "light" : "dark"}</button>
+            </div>
+            <div className="taControls">
+                <input
+                    placeholder="Find by name"
+                    value={query}
+                    onChange={handleSearchChange}
+                />
+
+                <button onClick={handleClickPrev} disabled={page <= 1}>
+                    Prev
+                </button>
+                <span>{page}/{totalPages}</span>
+                <button onClick={handleClickNext} disabled={page >= totalPages}>
+                    Next
+                </button>
+            </div>
 
             <UserList users={users} loading={loading} hasError={!!error}/>
         </div>
@@ -174,4 +186,28 @@ function UserList({hasError, loading, users}) {
             )}
         </div>
     );
+}
+
+
+
+export const ThemeContext = createContext(undefined);
+
+export const ThemeProvider = ({initTheme, children}) => {
+    const [theme, setTheme] = useState(initTheme);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    };
+
+    return (
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
+            {children}
+        </ThemeContext.Provider>
+    );
+};
+
+export function useThemeContext() {
+    const context = useContext(ThemeContext);
+    if (!context) throw new Error('Use ThemeContext within provider!');
+    return context;
 }
