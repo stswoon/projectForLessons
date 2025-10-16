@@ -14,3 +14,8 @@
 //     Задача Includes: https://clck.ru/3JVMSv
 //     Задача Awaited: https://clck.ru/3JVMTV
 //     Задача Exclude: https://clck.ru/3JVMTi
+
+
+
+type MyAwaited<T> = T extends Promise<infer U> ? MyAwaited<U> : T;
+type MyAwaited<T> = T extends PromiseLike<infer U> ? MyAwaited<U> : T;
