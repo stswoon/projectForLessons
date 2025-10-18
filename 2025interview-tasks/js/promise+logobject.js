@@ -211,3 +211,10 @@ new Promise((resolve) => {
         console.log('B');
     })()  //Call2
 })() //Call1
+
+
+// -------
+
+JS -> CSS -> DOM -> Layout (геометрически размеры) -> Paint (pixel) -> Compsition (слои)
+    \     /
+     -----
