@@ -84,37 +84,42 @@ tmp.a = 10;
 //Call      Stack:
 //Queue MacroTask: Macro1, Macro2, Macro3, Macro4
 //Queue MicroTask: Micro7
-//         Output: A, 10, B, 1, 3, 6, 11, 2
+//         Output: A, 10, B, 1, 3, 6, 11, 4
+
+//Call      Stack:
+//Queue MacroTask: Macro1, Macro2, Macro3, Macro4
+//Queue MicroTask: Micro7.1
+//         Output: A, 10, B, 1, 3, 6, 11, 4
 
 //Call      Stack:
 //Queue MicroTask:
 //Queue MacroTask: Macro1, Macro2, Macro3, Macro4
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2
 
 //Call      Stack:
 //Queue MicroTask: Micro8
 //Queue MacroTask: Macro3, Macro4
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4, 5, 8
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8
 
 //Call      Stack:
 //Queue MicroTask:
 //Queue MacroTask: Macro3, Macro4
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4, 5, 8, 9
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8, 9
 
 //Call      Stack:
 //Queue MicroTask: Micro9
 //Queue MacroTask: Macro4
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4, 5, 8, 9, 12
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8, 9, 12
 
 //Call      Stack:
 //Queue MicroTask:
 //Queue MacroTask: Macro4
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4, 5, 8, 9, 12, 13
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8, 9, 12, 13
 
 //Call      Stack:
 //Queue MicroTask:
 //Queue MacroTask:
-//         Output: A, 10, B, 1, 3, 6, 11, 2, 4, 5, 8, 9, 12, 13, 7
+//         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8, 9, 12, 13, 7
 
 //         Output: A, 10, B, 1, 3, 6, 11, 4, 2, 5, 8, 9, 12, 13, 7
 // 11 - Micro5
@@ -128,10 +133,11 @@ Promise.resolve()
     .then(() => {
         //Micro1
         console.log("1");
+        //Micro7
         return Promise.resolve();
     })
     .then(() => {
-        //Micro6
+        //Micro7.1
         console.log("2")
     });
 
@@ -146,7 +152,7 @@ Promise.resolve()
         throw 'x';
     })
     .catch(() => {
-        //Micro7
+        //Micro6
         console.log('4')
     });
 
