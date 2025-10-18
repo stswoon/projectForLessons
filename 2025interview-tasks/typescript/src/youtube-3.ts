@@ -327,3 +327,14 @@ const avatarProps3: AvatarProps = {
     isTeamMember: true,
     yearsOfExperience: 3,
 };
+
+
+//-------------------------
+
+//test console
+
+const tmp = {a: 1, b:2}
+console.log("tmp=", tmp);
+tmp.a = 10;
+
+//в консоле будет {a: 1, b:2} но если сделать expand то будет {a: 10, b:2}
