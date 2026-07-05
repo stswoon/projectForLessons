@@ -1,0 +1,43 @@
+---
+description: Figma MCP — только чтение, без Write to Figma и Comment Figma
+alwaysApply: true
+---
+
+# Figma MCP: read-only
+
+Сервер `plugin-figma-figma`. Разрешено **только читать** данные из Figma. Категории **Write to Figma** и **Comment Figma** **запрещены**, пока пользователь явно не снимет это ограничение.
+
+## Разрешено (read-only)
+
+- `get_design_context`, `get_metadata`, `get_screenshot`, `get_figjam`
+- `get_variable_defs`, `get_libraries`, `search_design_system`
+- `get_code_connect_map`, `get_code_connect_suggestions`
+- `download_assets` — только для просмотра/экспорта, без загрузки в другие файлы
+- `get_shader_effect`, `get_shader_fill`, `list_shader_effects`, `list_shader_fills`
+- `whoami`
+- `mcp_auth` — только для первичной OAuth-авторизации
+- Чтение комментариев (если доступно): `get_comments`, `list_comments`, `get_comment_thread`, `get_comments_summary`, `render_comment_target`
+
+## Запрещено — Write to Figma
+
+Не вызывай инструменты и операции, которые создают, изменяют или удаляют что-либо в Figma:
+
+- `use_figma` — в том числе «read-only»-скрипты (для чтения есть `get_*`)
+- `create_new_file`, `generate_diagram`, `generate_figma_design`, `upload_assets`
+- `add_code_connect_map`, `send_code_connect_mappings`
+- Skills с записью: `figma-use`, `figma-use-figjam`, `figma-use-slides`, `figma-generate-design`, `figma-generate-diagram`, `figma-generate-library` и аналоги
+
+## Запрещено — Comment Figma
+
+Не создавай, не редактируй и не удаляй комментарии в Figma:
+
+- `post_comment`, `create_comment`, `reply_to_comment`, `react_to_comment`
+- `edit_comment`, `delete_comment`, `resolve_comment`
+- `add_comment_reaction`, `remove_comment_reaction`
+- Любые write-операции с комментариями через `use_figma` или другие MCP
+
+## Поведение агента
+
+- Если пользователь просит создать/изменить макет, загрузить ассеты, сгенерировать диаграмму или оставить комментарий — **не вызывай MCP**. Кратко объясни ограничение и предложи сделать это вручную в Figma UI или явно попросить снять read-only.
+- Для design-to-code, просмотра структуры, скриншотов, variables и Code Connect — используй только read-инструменты.
+- Не предлагай «на всякий случай» записать в Figma или ответить на комментарий.

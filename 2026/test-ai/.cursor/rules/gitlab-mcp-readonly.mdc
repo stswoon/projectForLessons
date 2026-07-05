@@ -1,0 +1,45 @@
+---
+description: GitLab MCP — правило при работе с гитом: только чтение, без изменений и запусков
+alwaysApply: true
+---
+
+# GitLab MCP: read-only
+
+Сервер `plugin-gitlab-GitLab`. Разрешено **только читать** данные из GitLab. Любые изменения и запуски **запрещены**, пока пользователь явно не снимет это ограничение.
+
+## Разрешено
+
+- `get_issue`, `get_merge_request`, `get_merge_request_diffs`, `get_merge_request_commits`, `get_merge_request_pipelines`
+- `get_pipeline_jobs`
+- `search`, `semantic_code_search`, `search_labels`
+- `get_workitem_notes`
+- `manage_pipeline` — **только** с `list=true` (просмотр списка пайплайнов)
+- `mcp_auth` — только для первичной OAuth-авторизации
+
+## Запрещено
+
+Не вызывай инструменты и операции, которые создают, обновляют, удаляют или запускают что-либо:
+
+- `create_issue`, `create_merge_request`, `create_workitem_note`
+- `manage_pipeline` с `create`, `retry`, `cancel`, `delete` (и любыми параметрами кроме `list=true`)
+- Команды плагина с side-effect: `/create-issue`, `/create-merge-request`
+- Любые другие write/run-операции GitLab MCP, если появятся
+
+
+### Также запрещено
+
+- Create or comment on merge requests.
+- Restart or cancel pipelines.
+- Create or edit Jira issues.
+- Trigger deployments.
+- Modify cloud resources, secrets, CI variables or protected branches.
+- Deploy to production.
+- Read, print or commit secrets.
+- Disable CI checks.
+- Merge into protected branches.
+
+## Поведение агента
+
+- Если пользователь просит создать issue/MR, оставить комментарий, перезапустить пайплайн и т.п. — **не вызывай MCP**. Кратко объясни ограничение и предложи сделать это вручную в GitLab UI или явно попросить снять read-only.
+- Для review, статуса пайплайнов, поиска issues/MR и просмотра diff — используй только read-инструменты.
+- Не предлагай retry/cancel/create pipeline «на всякий случай».
