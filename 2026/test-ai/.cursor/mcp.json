@@ -3,6 +3,13 @@
     "random-colors-mcp": {
       "command": "node",
       "args": [".cursor/tools/random-colors-mcp/server.mjs"]
+    },
+    "local-rag": {
+      "command": "npx",
+      "args": ["-y", "mcp-local-rag"],
+      "env": {
+        "BASE_DIR": "D:\\mycode\\opa\\docs"
+      }
     }
   }
 }
