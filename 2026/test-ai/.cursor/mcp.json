@@ -1,9 +1,8 @@
 {
   "mcpServers": {
-    "random-names-mcp": {
+    "random-colors-mcp": {
       "command": "node",
-      "args": ["server.mjs"],
-      "cwd": ".cursor/tools/random-names-mcp"
+      "args": [".cursor/tools/random-colors-mcp/server.mjs"]
     }
   }
 }
