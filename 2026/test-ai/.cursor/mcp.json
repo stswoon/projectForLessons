@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "random-names-mcp": {
+      "command": "node",
+      "args": ["server.mjs"],
+      "cwd": ".cursor/tools/random-names-mcp"
+    }
+  }
+}

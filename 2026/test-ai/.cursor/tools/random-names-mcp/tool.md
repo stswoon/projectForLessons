@@ -1,8 +1,4 @@
-<!--
-Similar to n8n tool
--->
-
-# Tool: random-names
+# Tool: random-names-msp
 
 ## Purpose
 
@@ -34,9 +30,19 @@ Similar to n8n tool
 
 ## Execute
 
+CLI:
+
 ```bash
-node tools/random-names/index.mjs --count 10
+node .cursor/tools/random-names/index.mjs --count=10
 ```
+
+MCP server (stdio):
+
+```bash
+cd .cursor/tools/random-names && npm install && npm start
+```
+
+Cursor подхватывает сервер из `.cursor/mcp.json` (инструмент `random-names`).
 
 ## Rules
 
